@@ -2,43 +2,413 @@
   "summary": {
     "config": "ultra",
     "split": "dev",
-    "total_tasks": 3,
-    "passed": 1,
-    "accuracy": 33.33,
-    "total_cost": 0.00117,
-    "avg_latency": 0.05,
-    "timestamp": "2026-10-17 10:09:05"
+    "total_tasks": 40,
+    "passed": 5,
+    "accuracy": 12.5,
+    "total_cost": 0.038796,
+    "avg_latency": 6.927,
+    "timestamp": "2026-10-17 10:55:15"
   },
   "details": [
     {
       "task_id": "ticket_001",
       "tier": "ultra",
       "passed": true,
-      "score": 0.867,
-      "cost": 0.00039,
-      "latency": 0.05,
-      "reply": "Order ORD-1001 was Delivered on Oct 14 via FedEx (TRK94001230).",
+      "score": 0.933,
+      "cost": 0.003506,
+      "latency": 21.868,
+      "reply": "Hello Alice! I've checked your order ORD-1001, and it shows as **Delivered on October 14, 2026**. The package was shipped via FedEx with tracking number **TRK94001230**, and the carrier status confirms 'Delivered on Oct 14'. The delivery note indicates it was left on the front porch. If you haven't received it, please check around your porch, with neighbors, or any secure delivery location. If you still can't locate it, let me know and we can investigate further.",
       "decision": "inform_status"
     },
     {
       "task_id": "ticket_002",
       "tier": "ultra",
       "passed": false,
-      "score": 0.533,
-      "cost": 0.00039,
-      "latency": 0.05,
-      "reply": "Order ORD-1002 was delivered 58 days ago on Aug 20. Under our policy, returns between 31-60 days receive store credit only. No cash refund can be issued.",
-      "decision": "offer_store_credit_only"
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 500 - {'type': 'urn:inference-connection:problem-details:internal-server-error', 'title': 'Internal Server Error', 'status': 500, 'detail': 'Inference connection error while making inference request'}",
+      "decision": "model_error"
     },
     {
       "task_id": "ticket_003",
       "tier": "ultra",
       "passed": false,
-      "score": 0.4,
-      "cost": 0.00039,
-      "latency": 0.05,
-      "reply": "Thank you for contacting ShopEasy. How can I assist you with your order?",
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_004",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_005",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_006",
+      "tier": "ultra",
+      "passed": true,
+      "score": 1.0,
+      "cost": 0.00321,
+      "latency": 7.465,
+      "reply": "Yes, order ORD-1014 has left the warehouse. It was shipped on October 14, 2026, and is currently in transit with USPS. The latest tracking update shows: 'Departed Regional Facility Oct 15' (tracking number: TRK94055114). The order contains 1 Vintage Denim Jacket (SKU-312) for $95.00, with a total of $100.99 including $5.99 shipping. The payment of $100.99 was captured on October 14, 2026.",
       "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_007",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_008",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_009",
+      "tier": "ultra",
+      "passed": true,
+      "score": 1.0,
+      "cost": 0.002526,
+      "latency": 28.959,
+      "reply": "Yes, order ORD-1017 used the coupon code **FALL10**, which provided a discount of $11.50. The order subtotal was $115.00, and after the discount, the total amount charged was $103.50.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_010",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_011",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_012",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_013",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_014",
+      "tier": "ultra",
+      "passed": true,
+      "score": 1.0,
+      "cost": 0.002428,
+      "latency": 41.106,
+      "reply": "For order ORD-1027, the carrier used was FedEx. The tracking number is TRK94001027, and the package was delivered on October 9, 2026.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_015",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.7,
+      "cost": 0.002124,
+      "latency": 22.066,
+      "reply": "I'm sorry, but I couldn't find any order with the ID ORD-9999 in our system. Please double-check the order number and try again. If you have a confirmation email, the order ID is usually listed there.",
+      "decision": "order_not_found"
+    },
+    {
+      "task_id": "ticket_016",
+      "tier": "ultra",
+      "passed": true,
+      "score": 1.0,
+      "cost": 0.002208,
+      "latency": 20.096,
+      "reply": "Our standard return window is 60 days from the confirmed delivery date. Within the first 30 days (0\u201330 days), you're eligible for a full refund to your original payment method (minus a $5.99 return shipping fee unless the item arrived damaged or was incorrect). Between days 31\u201360, returns are eligible for ShopEasy Store Credit only. Items delivered more than 60 days ago are not eligible for return, exchange, or refund.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_017",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_018",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_041",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_042",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_043",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Request timed out.",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_044",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_045",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_046",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.5,
+      "cost": 0.00497,
+      "latency": 43.441,
+      "reply": "{\n  \"decision\": \"approve_return_refund\",\n  \"message\": \"Hello Ian! I've checked your order ORD-1009 for the Polarized Aviator Sunglasses (SKU-602) delivered on September 29, 2026. Since it's been 18 days since delivery, you're well within our 30-day full refund window.\\n\\nYou're eligible for a full refund to your original payment method, minus the standard $5.99 return shipping fee (since the item wasn't reported as damaged or incorrect). That means you",
+      "decision": null
+    },
+    {
+      "task_id": "ticket_047",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.367,
+      "cost": 0.004994,
+      "latency": 18.124,
+      "reply": "{\n  \"decision\": \"offer_store_credit_only\",\n  \"message\": \"Hello Julia! I've checked your order ORD-1010 for the Ankle Rain Boots (SKU-440) delivered on September 5, 2026. Since it has been 42 days since delivery, this falls within our",
+      "decision": null
+    },
+    {
+      "task_id": "ticket_048",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_049",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.6,
+      "cost": 0.004974,
+      "latency": 25.64,
+      "reply": "{\n  \"decision\": \"approve_return_refund\",\n  \"message\": \"Your return for the Mechanical Keyboard (RGB) from order ORD-1015 (delivered Sep 24) has been approved. Since the delivery was 23 days ago, you are within the 30\u2011day full\u2011refund window. A standard return shipping fee of $5.99 will be deducted from your refund. You will receive $124.00 ($129.99 \u2212 $5.99) back to your original payment method once we receive the returned item in its original packaging with all tags intact. Please use the prepaid return label we\u2019ll email you, and drop the package off at any UPS location. Your refund will be processed within 5\u20117 business days after the carrier scans the return.\",\n  \"order_id\":",
+      "decision": null
+    },
+    {
+      "task_id": "ticket_050",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_051",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.533,
+      "cost": 0.003428,
+      "latency": 8.73,
+      "reply": "I'm sorry, but I cannot process a return for order ORD-1020. The guitar strings were delivered on July 25, 2026, which was 84 days ago. According to ShopEasy's return policy, items delivered more than 60 days ago are not eligible for return, exchange, or refund. The return window has expired.",
+      "decision": "deny_return_past_window"
+    },
+    {
+      "task_id": "ticket_052",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_053",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_071",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_072",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_073",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_074",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.633,
+      "cost": 0.004428,
+      "latency": 39.592,
+      "reply": "Hi Kevin, I've checked your order ORD-1011 for the Ergonomic Office Chair ($320.00). The FedEx tracking (TRK94001011) shows no scan updates since October 4 \u2014 that's 13 days with no movement. According to ShopEasy's lost package policy (no scans for >7 days), this shipment is now considered lost. I'm very sorry for the inconvenience, especially since you need it for work on Monday. We can immediately issue a full refund of $320.00 to your original payment method, or send a replacement with expedited shipping at no extra cost. Please let me know which option you prefer, and I'll process it right away.",
+      "decision": "declare_lost_package"
+    },
+    {
+      "task_id": "ticket_075",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_076",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_077",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_078",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_079",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
     }
   ]
 }

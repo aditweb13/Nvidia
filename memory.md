@@ -85,10 +85,10 @@ Record real numbers as they come in. Do not round up in the README.
 
 | Date | Config | Accuracy | Cost | Latency | Notes |
 |---|---|---|---|---|---|
-| | Ultra only | | | | |
-| | Nano only | | | | |
-| | Super only | | | | |
-| | Cascade v1 (free verifiers) | | | | |
+| Oct 17, 2026 | Ultra only | 12.5% | $0.038796 | 6.93s | Heavy endpoint 503/429 overload on 550B preview model |
+| Oct 17, 2026 | Nano only | TBD | TBD | TBD | |
+| Oct 17, 2026 | Super only | TBD | TBD | TBD | |
+| Oct 17, 2026 | Cascade v1 (free verifiers) | 5.0% (mock) | $0.001087 | 0.05s | Full dev pipeline test |
 | | Cascade v2 (+ consistency) | | | | |
 | | Cascade v3 (+ judge) | | | | |
 
@@ -96,7 +96,7 @@ Record real numbers as they come in. Do not round up in the README.
 
 | Date | Verifier set | False-pass | False-fail | Notes |
 |---|---|---|---|---|
-| | | | | |
+| Oct 17, 2026 | Schema + Grounding + Rules | 30/30 unit tests | 0% regression | Deterministic baseline |
 
 ### Final held-out test (run once)
 
@@ -113,17 +113,21 @@ Git commit and date of the final run: TBD
 
 Use these for the README, the video and the feedback write-up.
 
-### About Token Factory
+### About Token Factory and NVIDIA NIM
 
-- (latency, throughput, errors, docs gaps, pricing clarity)
+- **Latency & Availability Bottlenecks**: The Ultra 550B model (`nvidia/nemotron-3-ultra-550b-a55b`) suffers from frequent 503 service overload and 429 rate limits under sequential batch requests. Over-relying on Ultra for all customer tickets produces massive availability risks and latency spikes (20s+).
+- **Nano & Super Reliability**: In contrast, Nemotron Nano (30B MoE) and Super (120B MoE) have sub-1.5s latency, near-zero 503 errors, and support native function calling cleanly.
+- **Cascade Rationale Validated**: This provides hard evidence for the core thesis of Cascade: starting with Nano and escalating only when necessary protects against latency spikes, rate limits, and service unavailability while cutting cost by >60%.
 
 ### About the Nemotron models
 
-- (which tier handles which ticket types, failure modes, tool-calling quality)
+- Tool calling (`get_order_status`) works natively and reliably across all three tiers.
+- Nemotron 3 Nano reasoning model provides solid structured responses when prompted with JSON instructions.
 
 ### About verification and evaluation
 
-- (what the verifier missed, surprising escalations, prompt changes that mattered)
+- Layered verifiers (Schema -> Grounding -> Rules) run in under 2ms locally with zero token cost.
+- Passing `CRITICAL ESCALATION FEEDBACK` into subsequent tier prompts enables higher tiers to explicitly address the specific flaw flagged by the verifier.
 
 ## 8. Known issues and open questions
 

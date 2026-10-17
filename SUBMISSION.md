@@ -12,6 +12,11 @@
 ### Short Elevator Pitch
 Cascade is an intelligent, cost-aware model router built on NVIDIA Nemotron and Nebius Token Factory that routes tasks to Nemotron Nano first, verifies replies with layered deterministic and semantic verifiers, and escalates to Super and Ultra only when needed—achieving 92.5% accuracy with a 68% cost reduction.
 
+### Project Links
+- **Live Interactive Demo:** [https://huggingface.co/spaces/rajadityaaaaaa/cascade-nemotron-router](https://huggingface.co/spaces/rajadityaaaaaa/cascade-nemotron-router)
+- **Direct Web App:** [https://rajadityaaaaaa-cascade-nemotron-router.hf.space](https://rajadityaaaaaa-cascade-nemotron-router.hf.space)
+- **GitHub Repository:** [https://github.com/aditweb13/Nvidia](https://github.com/aditweb13/Nvidia)
+
 ---
 
 ### 1. Inspiration

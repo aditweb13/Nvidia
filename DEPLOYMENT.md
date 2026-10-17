@@ -89,9 +89,16 @@ When hosting a public demo, prevent credit exhaustion and denial-of-service:
 5. **Port:** Expose port `8501` for the Streamlit web interface.
 
 ### Deploying to Hugging Face Spaces
-1. Create a new Space with the **Streamlit** SDK.
-2. Under **Settings > Variables and secrets**, add `TOKEN_FACTORY_API_KEY` as a secret.
-3. Push repository code to the Hugging Face Git remote.
+Cascade is deployed as a live Docker Space on Hugging Face:
+- **Live Space URL:** [https://huggingface.co/spaces/rajadityaaaaaa/cascade-nemotron-router](https://huggingface.co/spaces/rajadityaaaaaa/cascade-nemotron-router)
+- **Direct Web App:** [https://rajadityaaaaaa-cascade-nemotron-router.hf.space](https://rajadityaaaaaa-cascade-nemotron-router.hf.space)
+
+**How to update or redeploy:**
+1. Under Space **Settings > Variables and secrets**, optionally add `TOKEN_FACTORY_API_KEY` for live model inference (or use built-in Mock mode).
+2. Run the automated deploy script:
+   ```bash
+   python scripts/deploy_hf.py
+   ```
 
 ---
 

@@ -23,8 +23,10 @@ from typing import Any
 # Add project root to sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from app.cascade import run_cascade
 from app.db import init_db, log_call, log_task
 from app.models import call_model
+from app.schemas import Task
 from app.tools import get_order_status, get_policy
 from eval.grader import grade_reply
 
@@ -209,7 +211,7 @@ async def _run_evaluation_async(
     )
     init_db()
 
-    configs_to_run = ["nano", "super", "ultra"] if config == "all" else [config]
+    configs_to_run = ["nano", "super", "ultra", "cascade"] if config == "all" else [config]
     results_dir = Path(__file__).resolve().parent / "results"
     results_dir.mkdir(parents=True, exist_ok=True)
 
@@ -219,7 +221,45 @@ async def _run_evaluation_async(
         logger.info("=== Running evaluation for config: %s ===", cfg.upper())
         cfg_results = []
         for i, t in enumerate(tasks, 1):
-            res = await run_single_model_task(t, tier=cfg, mock=mock)
+            try:
+                if cfg == "cascade":
+                    task_obj = Task(
+                        task_id=t["task_id"],
+                        ticket_text=t["ticket_text"],
+                        order_id=t.get("order_id"),
+                        split=split,
+                        config="cascade",
+                    )
+                    c_res = await run_cascade(task_obj, mock=mock)
+                    # Grade with gold
+                    reply_dec = c_res.reply.decision if c_res.reply else None
+                    grade = grade_reply(c_res.answer, t["gold"], reply_decision=reply_dec)
+                    res = {
+                        "task_id": t["task_id"],
+                        "tier": c_res.tier,
+                        "attempts": c_res.attempts,
+                        "passed": grade.passed,
+                        "score": grade.score,
+                        "cost": c_res.cost,
+                        "latency": c_res.latency,
+                        "needs_review": c_res.needs_review,
+                        "reply": c_res.answer,
+                        "decision": reply_dec,
+                    }
+                else:
+                    res = await run_single_model_task(t, tier=cfg, mock=mock)
+            except Exception as e:  # noqa: BLE001
+                logger.error("Task %s failed after retries: %s", t["task_id"], e)
+                res = {
+                    "task_id": t["task_id"],
+                    "tier": cfg,
+                    "passed": False,
+                    "score": 0.0,
+                    "cost": 0.0,
+                    "latency": 0.0,
+                    "reply": f"Model error: {e}",
+                    "decision": "model_error",
+                }
             cfg_results.append(res)
             logger.info(
                 "[%d/%d] %s (%s) -> Passed: %s, Score: %.2f, Cost: $%.6f, Latency: %.2fs",
@@ -282,7 +322,7 @@ def main():
     )
     parser.add_argument(
         "--config",
-        choices=["nano", "super", "ultra", "all"],
+        choices=["nano", "super", "ultra", "cascade", "all"],
         default="ultra",
         help="Model config",
     )

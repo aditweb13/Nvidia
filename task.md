@@ -55,20 +55,20 @@ Assumes about 3 to 4 focused hours a day.
 
 ### Tue Oct 20: controller
 
-- [ ] **MUST** `app/schemas.py`: `Task`, `Reply`, `Verdict`, `ModelResult`, `CascadeResult`
-- [ ] **MUST** `app/cascade.py`: loop Nano -> Super -> Ultra, log every call, return `needs_review` if the last tier fails
-- [ ] **MUST** Feedback passing: previous failure reason goes into the next tier's prompt
-- [ ] **MUST** Retry with backoff on model errors
-- [ ] **MUST** Fake model client for tests
-- [ ] **MUST** Tests for the controller loop (pass at Nano, escalate once, escalate twice, final-tier failure)
+- [x] **MUST** `app/schemas.py`: `Task`, `Reply`, `Verdict`, `ModelResult`, `CascadeResult`
+- [x] **MUST** `app/cascade.py`: loop Nano -> Super -> Ultra, log every call, return `needs_review` if the last tier fails
+- [x] **MUST** Feedback passing: previous failure reason goes into the next tier's prompt
+- [x] **MUST** Retry with backoff on model errors
+- [x] **MUST** Fake model client for tests
+- [x] **MUST** Tests for the controller loop (pass at Nano, escalate once, escalate twice, final-tier failure)
 
 ### Wed Oct 21: free verifiers
 
-- [ ] **MUST** `verifiers/schema.py` (Pydantic validation)
-- [ ] **MUST** `verifiers/grounding.py` (dates, amounts, statuses must appear in tool output)
-- [ ] **MUST** `verifiers/rules.py` (policy logic: refund window, store credit window, damaged, double charge)
-- [ ] **MUST** Known-good and known-bad tests for each verifier
-- [ ] **MUST** Run full cascade on the dev set and check logs
+- [x] **MUST** `verifiers/schema.py` (Pydantic validation)
+- [x] **MUST** `verifiers/grounding.py` (dates, amounts, statuses must appear in tool output)
+- [x] **MUST** `verifiers/rules.py` (policy logic: refund window, store credit window, damaged, double charge)
+- [x] **MUST** Known-good and known-bad tests for each verifier
+- [x] **MUST** Run full cascade on the dev set and check logs
 
 **Done when:** Cascade runs end to end on all 40 dev tickets and writes logs.
 

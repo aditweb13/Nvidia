@@ -104,8 +104,8 @@ async def call_model(
 
     # 3. Live call with retries
     client = get_client()
-    max_retries = 3
-    backoff = 2.0
+    max_retries = 4
+    backoff = 3.0
     start_time = time.perf_counter()
 
     for attempt in range(1, max_retries + 1):

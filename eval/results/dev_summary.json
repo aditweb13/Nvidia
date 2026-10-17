@@ -1,12 +1,12 @@
 {
-  "ultra": {
-    "config": "ultra",
+  "cascade": {
+    "config": "cascade",
     "split": "dev",
-    "total_tasks": 3,
-    "passed": 1,
-    "accuracy": 33.33,
-    "total_cost": 0.00117,
-    "avg_latency": 0.05,
-    "timestamp": "2026-10-17 10:09:05"
+    "total_tasks": 40,
+    "passed": 2,
+    "accuracy": 5.0,
+    "total_cost": 0.001087,
+    "avg_latency": 0.053,
+    "timestamp": "2026-10-17 10:33:02"
   }
 }

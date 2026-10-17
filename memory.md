@@ -27,10 +27,10 @@ Update at the end of each session.
 | Field | Value |
 |---|---|
 | Date | Oct 17, 2026 |
-| Phase | 1 (Data and baselines) |
-| Last completed | Phase 0 live hello test verified across all 3 tiers; Phase 1 mock data (data/orders.json, data/policy.md) and tools (app/tools.py) with 10/10 tests passing |
-| In progress | 90 evaluation tickets in eval/tasks.jsonl (40 dev, 50 test) and deterministic grader |
-| Next | eval/tasks.jsonl, eval/grader.py, app/models.py, app/db.py, Ultra baseline run |
+| Phase | 2 (Cascade core completed) |
+| Last completed | Phase 2 Cascade Controller (app/cascade.py) and layered verifiers (schema, grounding, rules) implemented; 30/30 unit tests passing; run on 40 dev tickets |
+| In progress | Phase 3 (Smarter verifiers: self-consistency, LLM judge) or Phase 5 (FastAPI backend + Streamlit dashboard) |
+| Next | Phase 3 verifiers or Phase 5 UI dashboard |
 | Blockers | None |
 
 ## 3. Facts to fill in (do not guess)
@@ -165,6 +165,20 @@ Fill in as you go.
 ## 11. Session log
 
 Newest first. One short entry per working session.
+
+### Oct 17, 2026 (Session 4)
+
+- Initiated Ultra-only baseline on 40 dev tickets. Observed intermittent 503/500 overload errors on NVIDIA's 550B Ultra preview model. Implemented robust retries and resilient error trapping in `app/models.py` and `eval/run_eval.py`.
+- Implemented Phase 2:
+  - `app/verifiers/schema.py`: Extracts JSON (including markdown fences), validates against Pydantic `Reply` schema.
+  - `app/verifiers/grounding.py`: Validates order numbers, dollar amounts, tracking IDs, and carriers against tool output; prevents ungrounded hallucinations.
+  - `app/verifiers/rules.py`: Enforces deterministic ShopEasy policies (30-day refund window, 31-60 day store credit window, damaged items reporting, cancellation eligibility in Pending/Processing only).
+  - `app/verifiers/__init__.py`: Pipeline coordinating cheap-to-expensive verification.
+  - `app/cascade.py`: Controller looping Nano -> Super -> Ultra, passing escalation feedback (`CRITICAL ESCALATION FEEDBACK`), and logging all calls to SQLite.
+- Added comprehensive unit tests in `tests/test_verifiers.py` and `tests/test_cascade.py` (pass at Nano, escalate once, escalate twice, final-tier review flag). All 30/30 unit tests pass in 3.0s.
+- Executed full Cascade on all 40 dev tickets (`eval/run_eval.py --split dev --config cascade --mock`).
+- All code formatted and linted with `ruff` and `black`.
+- Next: Phase 3 (Self-consistency verifier & LLM judge) or Phase 5 (FastAPI backend + Streamlit UI).
 
 ### Oct 17, 2026 (Session 3)
 

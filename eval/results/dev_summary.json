@@ -1,0 +1,12 @@
+{
+  "ultra": {
+    "config": "ultra",
+    "split": "dev",
+    "total_tasks": 3,
+    "passed": 1,
+    "accuracy": 33.33,
+    "total_cost": 0.00117,
+    "avg_latency": 0.05,
+    "timestamp": "2026-10-17 10:09:05"
+  }
+}

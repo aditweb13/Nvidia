@@ -38,12 +38,12 @@ Assumes about 3 to 4 focused hours a day.
 
 ### Mon Oct 19: benchmark and baseline
 
-- [ ] **MUST** Write 90 tickets in `eval/tasks.jsonl`: 40 easy, 30 medium, 20 hard
-- [ ] **MUST** Gold labels: correct decision, required facts, issue checklist
-- [ ] **MUST** Tag splits: 40 dev, 50 test (keep the test set balanced across difficulty)
-- [ ] **MUST** `eval/grader.py` (deterministic: decision, facts, checklist)
-- [ ] **MUST** `app/models.py` basic `call_model` with token and cost accounting
-- [ ] **MUST** `app/db.py` SQLite tables (`tasks`, `calls`)
+- [x] **MUST** Write 90 tickets in `eval/tasks.jsonl`: 40 easy, 30 medium, 20 hard
+- [x] **MUST** Gold labels: correct decision, required facts, issue checklist
+- [x] **MUST** Tag splits: 40 dev, 50 test (keep the test set balanced across difficulty)
+- [x] **MUST** `eval/grader.py` (deterministic: decision, facts, checklist)
+- [x] **MUST** `app/models.py` basic `call_model` with token and cost accounting
+- [x] **MUST** `app/db.py` SQLite tables (`tasks`, `calls`)
 - [ ] **MUST** Run **Ultra-only** on dev and record accuracy and cost in `memory.md`
 - [ ] SHOULD Run Nano-only and Super-only on dev for early comparison
 

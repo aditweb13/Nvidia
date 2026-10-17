@@ -1,0 +1,44 @@
+{
+  "summary": {
+    "config": "ultra",
+    "split": "dev",
+    "total_tasks": 3,
+    "passed": 1,
+    "accuracy": 33.33,
+    "total_cost": 0.00117,
+    "avg_latency": 0.05,
+    "timestamp": "2026-10-17 10:09:05"
+  },
+  "details": [
+    {
+      "task_id": "ticket_001",
+      "tier": "ultra",
+      "passed": true,
+      "score": 0.867,
+      "cost": 0.00039,
+      "latency": 0.05,
+      "reply": "Order ORD-1001 was Delivered on Oct 14 via FedEx (TRK94001230).",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_002",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.533,
+      "cost": 0.00039,
+      "latency": 0.05,
+      "reply": "Order ORD-1002 was delivered 58 days ago on Aug 20. Under our policy, returns between 31-60 days receive store credit only. No cash refund can be issued.",
+      "decision": "offer_store_credit_only"
+    },
+    {
+      "task_id": "ticket_003",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.4,
+      "cost": 0.00039,
+      "latency": 0.05,
+      "reply": "Thank you for contacting ShopEasy. How can I assist you with your order?",
+      "decision": "inform_status"
+    }
+  ]
+}

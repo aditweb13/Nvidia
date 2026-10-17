@@ -100,12 +100,12 @@ Record real numbers as they come in. Do not round up in the README.
 
 | Config | Accuracy | Cost | Latency | Tier distribution |
 |---|---|---|---|---|
-| Nano only | | | | |
-| Super only | | | | |
-| Ultra only | | | | |
-| Cascade | | | | |
+| Nano only | 56.0% (28/50) | $0.009696 | 15.87s | 100% Nano |
+| Super only | 56.0% (28/50) | $0.045178 | 8.35s | 100% Super |
+| Ultra only | 2.0% (1/50) | $0.008578 | 1.16s | 49/50 throttled by 429/503 limits on 550B preview |
+| Cascade | 42.0% (21/50) | $0.011996 | 20.65s | 49 Nano (98%), 1 Needs Review (2%) |
 
-Git commit and date of the final run: TBD
+Git commit and date of the final run: `e2d65f9` (`v1.0-eval`), Oct 17, 2026.
 
 ## 7. Lessons and observations
 

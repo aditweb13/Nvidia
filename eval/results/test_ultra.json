@@ -1,0 +1,529 @@
+{
+  "summary": {
+    "config": "ultra",
+    "split": "test",
+    "total_tasks": 50,
+    "passed": 1,
+    "accuracy": 2.0,
+    "total_cost": 0.008578,
+    "avg_latency": 1.159,
+    "tier_distribution": null,
+    "commit_hash": "e2d65f96f64b340b3d3c82b6de665b73306cd867",
+    "models": {
+      "nano": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "super": "nvidia/nemotron-3-super-120b-a12b",
+      "ultra": "nvidia/nemotron-3-ultra-550b-a55b"
+    },
+    "pricing": {
+      "nano_in": 0.1,
+      "nano_out": 0.2,
+      "super_in": 0.5,
+      "super_out": 1.5,
+      "ultra_in": 2.0,
+      "ultra_out": 6.0
+    },
+    "timestamp": "2026-10-17 12:35:50"
+  },
+  "details": [
+    {
+      "task_id": "ticket_019",
+      "tier": "ultra",
+      "passed": true,
+      "score": 1.0,
+      "cost": 0.00465,
+      "latency": 26.188,
+      "reply": "Hello Bob! Here's the latest update on your order ORD-1002:\n\n**Order Details:**\n- Order ID: ORD-1002\n- Customer: Bob Smith (bob.smith@example.com)\n- Order Date: August 15, 2026\n- Delivery Date: August 20, 2026\n- Current Status: **Delivered**\n\n**Items:**\n- Waterproof Hiking Boots (SKU-205) \u00d7 1 \u2014 $145.00\n\n**Pricing:**\n- Subtotal: $145.00\n- Discount (SUMMER10): -$14.50\n- Shipping: $0.00\n- **Total Charged: $130.50** (captured on Aug 15, 2026)\n\n**Tracking:**\n- Carrier: UPS\n- Tracking Number: TRK1Z999001\n- Status: Delivered on August 20, 2026\n\n**Note:** This order was delivered 58 days ago. According to our return policy, items delivered 31\u201360 days ago are eligible for **store credit only** (not a cash/card refund), provided they are unworn, undamaged, and in original packaging with tags. A $5.99 return shipping fee would be deducted unless the item arrived damaged or was incorrect.\n\nLet me know if you'd like to initiate a return for store credit, or if you have any other questions!",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_020",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_021",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_022",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_023",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_024",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_025",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_026",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_027",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_028",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_029",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_030",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_031",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_032",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_033",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_034",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_035",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_036",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_037",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_038",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_039",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_040",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_054",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_055",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_056",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_057",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_058",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_059",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_060",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_061",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_062",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_063",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_064",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_065",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_066",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_067",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_068",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_069",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.633,
+      "cost": 0.003928,
+      "latency": 31.759,
+      "reply": "I'm sorry, but we cannot accept a return for order ORD-1003. The leather travel duffel was delivered on July 6, 2026, which is more than 100 days ago. According to ShopEasy's return policy, items delivered more than 60 days ago are not eligible for return, exchange, or refund. The 30-day full refund window and the 31\u201360 day store credit window have both passed.",
+      "decision": "deny_return_past_window"
+    },
+    {
+      "task_id": "ticket_070",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_080",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_081",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_082",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_083",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_084",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_085",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_086",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_087",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_088",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_089",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 503 - {'error': {'message': 'Service temporarily overloaded', 'type': 'Service Unavailable', 'code': 503}}",
+      "decision": "model_error"
+    },
+    {
+      "task_id": "ticket_090",
+      "tier": "ultra",
+      "passed": false,
+      "score": 0.0,
+      "cost": 0.0,
+      "latency": 0.0,
+      "reply": "Model error: Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+      "decision": "model_error"
+    }
+  ]
+}

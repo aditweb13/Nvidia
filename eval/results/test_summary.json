@@ -1,0 +1,105 @@
+{
+  "nano": {
+    "config": "nano",
+    "split": "test",
+    "total_tasks": 50,
+    "passed": 28,
+    "accuracy": 56.0,
+    "total_cost": 0.009696,
+    "avg_latency": 15.868,
+    "tier_distribution": null,
+    "commit_hash": "e2d65f96f64b340b3d3c82b6de665b73306cd867",
+    "models": {
+      "nano": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "super": "nvidia/nemotron-3-super-120b-a12b",
+      "ultra": "nvidia/nemotron-3-ultra-550b-a55b"
+    },
+    "pricing": {
+      "nano_in": 0.1,
+      "nano_out": 0.2,
+      "super_in": 0.5,
+      "super_out": 1.5,
+      "ultra_in": 2.0,
+      "ultra_out": 6.0
+    },
+    "timestamp": "2026-10-17 12:05:24"
+  },
+  "super": {
+    "config": "super",
+    "split": "test",
+    "total_tasks": 50,
+    "passed": 28,
+    "accuracy": 56.0,
+    "total_cost": 0.045178,
+    "avg_latency": 8.352,
+    "tier_distribution": null,
+    "commit_hash": "e2d65f96f64b340b3d3c82b6de665b73306cd867",
+    "models": {
+      "nano": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "super": "nvidia/nemotron-3-super-120b-a12b",
+      "ultra": "nvidia/nemotron-3-ultra-550b-a55b"
+    },
+    "pricing": {
+      "nano_in": 0.1,
+      "nano_out": 0.2,
+      "super_in": 0.5,
+      "super_out": 1.5,
+      "ultra_in": 2.0,
+      "ultra_out": 6.0
+    },
+    "timestamp": "2026-10-17 12:12:22"
+  },
+  "ultra": {
+    "config": "ultra",
+    "split": "test",
+    "total_tasks": 50,
+    "passed": 1,
+    "accuracy": 2.0,
+    "total_cost": 0.008578,
+    "avg_latency": 1.159,
+    "tier_distribution": null,
+    "commit_hash": "e2d65f96f64b340b3d3c82b6de665b73306cd867",
+    "models": {
+      "nano": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "super": "nvidia/nemotron-3-super-120b-a12b",
+      "ultra": "nvidia/nemotron-3-ultra-550b-a55b"
+    },
+    "pricing": {
+      "nano_in": 0.1,
+      "nano_out": 0.2,
+      "super_in": 0.5,
+      "super_out": 1.5,
+      "ultra_in": 2.0,
+      "ultra_out": 6.0
+    },
+    "timestamp": "2026-10-17 12:35:50"
+  },
+  "cascade": {
+    "config": "cascade",
+    "split": "test",
+    "total_tasks": 50,
+    "passed": 21,
+    "accuracy": 42.0,
+    "total_cost": 0.011996,
+    "avg_latency": 20.654,
+    "tier_distribution": {
+      "nano": 49,
+      "needs_review": 1
+    },
+    "commit_hash": "e2d65f96f64b340b3d3c82b6de665b73306cd867",
+    "models": {
+      "nano": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+      "super": "nvidia/nemotron-3-super-120b-a12b",
+      "ultra": "nvidia/nemotron-3-ultra-550b-a55b"
+    },
+    "pricing": {
+      "nano_in": 0.1,
+      "nano_out": 0.2,
+      "super_in": 0.5,
+      "super_out": 1.5,
+      "ultra_in": 2.0,
+      "ultra_out": 6.0
+    },
+    "timestamp": "2026-10-17 12:53:03"
+  }
+}

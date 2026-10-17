@@ -45,10 +45,15 @@ def generate_pareto_chart():
         },
     }
 
-    # Load from saved summary file if available
-    if _SUMMARY_FILE.exists():
+    # Load from saved summary file if available (prefer test_summary.json)
+    summary_file = (
+        _RESULTS_DIR / "test_summary.json"
+        if (_RESULTS_DIR / "test_summary.json").exists()
+        else _SUMMARY_FILE
+    )
+    if summary_file.exists():
         try:
-            with open(_SUMMARY_FILE, "r", encoding="utf-8") as f:
+            with open(summary_file, "r", encoding="utf-8") as f:
                 saved = json.load(f)
                 mapping = {
                     "nano": "Nano only",

@@ -178,6 +178,15 @@ def _load_json(path: Path) -> dict[str, Any]:
         return {}
 
 
+def _get_commit_hash() -> str:
+    import subprocess
+
+    try:
+        return subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+    except (subprocess.SubprocessError, OSError):
+        return "unknown"
+
+
 def _save_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
@@ -189,6 +198,7 @@ def run_evaluation_sync(
     config: str = "ultra",
     mock: bool = False,
     limit: int | None = None,
+    use_cache: bool = True,
 ):
     asyncio.run(
         _run_evaluation_async(
@@ -196,6 +206,7 @@ def run_evaluation_sync(
             config=config,
             mock=mock,
             limit=limit,
+            use_cache=use_cache,
         )
     )
 
@@ -205,6 +216,7 @@ async def _run_evaluation_async(
     config: str = "ultra",
     mock: bool = False,
     limit: int | None = None,
+    use_cache: bool = True,
 ):
     tasks_path = Path(__file__).resolve().parent / "tasks.jsonl"
     tasks = _load_tasks(tasks_path, split)
@@ -213,11 +225,12 @@ async def _run_evaluation_async(
         tasks = tasks[:limit]
 
     logger.info(
-        "Loaded %d tasks for split=%s (config=%s, mock=%s)",
+        "Loaded %d tasks for split=%s (config=%s, mock=%s, cache=%s)",
         len(tasks),
         split,
         config,
         mock,
+        use_cache,
     )
     init_db()
 
@@ -242,7 +255,7 @@ async def _run_evaluation_async(
                         split=split,
                         config="cascade",
                     )
-                    c_res = await run_cascade(task_obj, mock=mock)
+                    c_res = await run_cascade(task_obj, mock=mock, use_cache=use_cache)
                     # Grade with gold
                     reply_dec = c_res.reply.decision if c_res.reply else None
                     grade = grade_reply(
@@ -261,7 +274,9 @@ async def _run_evaluation_async(
                         "decision": reply_dec,
                     }
                 else:
-                    res = await run_single_model_task(t, tier=cfg, mock=mock)
+                    res = await run_single_model_task(
+                        t, tier=cfg, mock=mock, use_cache=use_cache
+                    )
             except Exception as e:  # noqa: BLE001
                 logger.error("Task %s failed after retries: %s", t["task_id"], e)
                 res = {
@@ -297,6 +312,22 @@ async def _run_evaluation_async(
             else 0.0
         )
 
+        # Metrics required by rules.md section 4
+        tier_dist = {}
+        if cfg == "cascade":
+            for r in cfg_results:
+                t_name = r.get("tier", "unknown")
+                if r.get("needs_review"):
+                    tier_dist["needs_review"] = tier_dist.get("needs_review", 0) + 1
+                else:
+                    tier_dist[t_name] = tier_dist.get(t_name, 0) + 1
+
+        commit_hash = _get_commit_hash()
+
+        from app.config import get_settings
+
+        st = get_settings()
+
         summary = {
             "config": cfg,
             "split": split,
@@ -305,6 +336,21 @@ async def _run_evaluation_async(
             "accuracy": round(accuracy, 2),
             "total_cost": round(total_cost, 6),
             "avg_latency": round(avg_latency, 3),
+            "tier_distribution": tier_dist if cfg == "cascade" else None,
+            "commit_hash": commit_hash,
+            "models": {
+                "nano": st.model_nano,
+                "super": st.model_super,
+                "ultra": st.model_ultra,
+            },
+            "pricing": {
+                "nano_in": st.price_nano_in,
+                "nano_out": st.price_nano_out,
+                "super_in": st.price_super_in,
+                "super_out": st.price_super_out,
+                "ultra_in": st.price_ultra_in,
+                "ultra_out": st.price_ultra_out,
+            },
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
         }
         summary_records[cfg] = summary
@@ -344,6 +390,11 @@ def main():
         "--mock", action="store_true", help="Run in mock mode without API calls"
     )
     parser.add_argument(
+        "--final",
+        action="store_true",
+        help="Explicit authorization to execute final evaluation on frozen test set",
+    )
+    parser.add_argument(
         "--limit",
         type=int,
         default=None,
@@ -351,15 +402,21 @@ def main():
     )
     args = parser.parse_args()
 
-    if args.split == "test" and not args.mock:
+    if args.split == "test" and not (args.mock or args.final):
         print(
             "CRITICAL: Per rules.md, the test split is frozen until the final evaluation."
         )
-        print("Please run on the dev split during development.")
+        print("Please pass --final to confirm execution on the frozen test set.")
         sys.exit(1)
 
+    use_cache = args.split != "test"
+
     run_evaluation_sync(
-        split=args.split, config=args.config, mock=args.mock, limit=args.limit
+        split=args.split,
+        config=args.config,
+        mock=args.mock,
+        limit=args.limit,
+        use_cache=use_cache,
     )
 
 

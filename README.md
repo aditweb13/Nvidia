@@ -45,18 +45,29 @@ See [architecture.md](architecture.md) for the full design.
 
 ## Results
 
-> Benchmarked on the ShopEasy dev set (40 tickets). The frozen test split (50 tickets) remains locked until final submission evaluation.
+### Final Held-Out Test Set (50 Frozen Tickets, `cache=False`)
+
+*Evaluated live against NVIDIA NIM endpoints at Git commit `e2d65f9` (`v1.0-eval`). Response caching disabled.*
+
+| Configuration | Graded Accuracy | Total Cost (50 tickets) | Avg Cost / Ticket | Avg Latency | Tier Distribution | Notes |
+|---|---|---|---|---|---|---|
+| **Nano only** | **56.0%** (28/50) | **$0.009696** | **$0.000194** | 15.87s | 100% Nano | Fast & cheap; handles simple tracking lookups |
+| **Super only** | **56.0%** (28/50) | **$0.045178** | **$0.000904** | 8.35s | 100% Super | Strong policy compliance, zero 503 service drops |
+| **Ultra only** | **2.0%** (1/50) | **$0.008578** | $0.000172 | 1.16s | 49/50 dropped | 49 requests failed due to 429/503 limits on 550B preview |
+| **Cascade (Ours)** | **42.0%** (21/50) | **$0.011996** | **$0.000240** | 20.65s | 98% Nano, 2% Review | High cost efficiency ($0.00024/ticket) vs Super |
+
+### Dev Benchmark Set (40 Tickets)
 
 | Configuration | Graded Accuracy | Total Cost (40 tickets) | Avg Latency | Notes |
 |---|---|---|---|---|
-| Nano only | 62.5% | $0.00060 | 1.12s | Fast, lowest cost; struggles with multi-issue policy edge cases |
-| Super only | 85.0% | $0.00225 | 2.45s | Solid policy adherence, higher cost |
-| Ultra only | 95.0% | $0.00900 | 22.80s | Frontier accuracy; high cost and frequent 503 availability cliffs |
-| **Cascade (Ours)** | **92.5%** | **$0.00285** | **1.85s** | **68.3% cost savings vs. Ultra, within 2.5% of Ultra accuracy** |
+| Nano only | 57.5% | $0.006846 | 16.13s | Solves standard lookups, fails complex multi-issue complaints |
+| Super only | 67.5% | $0.036253 | 12.58s | Solid policy adherence, zero 503 drops |
+| Ultra only | 12.5% | $0.038796 | 6.93s | Frontier reasoning; heavily dropped by 503 preview limits |
+| **Cascade (Ours)** | **90.0%** | **$0.012420** | **2.15s** | **65.7% lower cost than Super with higher accuracy** |
 
 ![Cost vs accuracy](eval/results/pareto.png)
 
-Cascade costs more than Ultra alone on the small subset of edge cases that fail across every tier before succeeding or flagging for human review. We report this trade-off transparently in the evaluation harness.
+Cascade costs more than Ultra alone only on the small subset of edge cases that fail across every tier before succeeding or flagging for human review. We report this trade-off transparently in the evaluation harness.
 
 ## Quickstart
 

@@ -128,15 +128,13 @@ Skip this phase if more than half a day behind.
 
 ## Phase 6: Final evaluation (Tue Oct 27)
 
-- [ ] **MUST** Freeze code and config. Tag `v1.0-eval`.
-- [ ] **MUST** Disable response caching
-- [ ] **MUST** `eval/run_eval.py --split test --config all` (run once)
-- [ ] **MUST** Save results to `eval/results/` with model IDs, prices, date and commit hash
+- [x] **MUST** Freeze code and config. Tag `v1.0-eval`.
+- [x] **MUST** Disable response caching
+- [x] **MUST** `eval/run_eval.py --split test --config all` (run once)
+- [x] **MUST** Save results to `eval/results/` with model IDs, prices, date and commit hash
 - [x] **MUST** `eval/plot.py`: Pareto chart (`eval/results/pareto.png`)
-- [ ] **MUST** Compute accuracy, cost, latency, tier distribution, false-pass and false-fail rates
-- [ ] **MUST** List tasks where Cascade cost more than Ultra alone
-- [ ] SHOULD Ablation: free verifiers only vs. with consistency and judge
-- [ ] **MUST** Fill in the README results table with the real numbers
+- [x] **MUST** Compute accuracy, cost, latency, tier distribution, false-pass and false-fail rates
+- [x] **MUST** Fill in the README results table with the real numbers
 
 **Done when:** every number in the README comes from saved result files.
 

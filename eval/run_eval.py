@@ -211,7 +211,9 @@ async def _run_evaluation_async(
     )
     init_db()
 
-    configs_to_run = ["nano", "super", "ultra", "cascade"] if config == "all" else [config]
+    configs_to_run = (
+        ["nano", "super", "ultra", "cascade"] if config == "all" else [config]
+    )
     results_dir = Path(__file__).resolve().parent / "results"
     results_dir.mkdir(parents=True, exist_ok=True)
 
@@ -233,7 +235,9 @@ async def _run_evaluation_async(
                     c_res = await run_cascade(task_obj, mock=mock)
                     # Grade with gold
                     reply_dec = c_res.reply.decision if c_res.reply else None
-                    grade = grade_reply(c_res.answer, t["gold"], reply_decision=reply_dec)
+                    grade = grade_reply(
+                        c_res.answer, t["gold"], reply_decision=reply_dec
+                    )
                     res = {
                         "task_id": t["task_id"],
                         "tier": c_res.tier,

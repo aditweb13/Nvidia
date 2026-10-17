@@ -27,10 +27,10 @@ Update at the end of each session.
 | Field | Value |
 |---|---|
 | Date | Oct 17, 2026 |
-| Phase | 2 (Cascade core completed) |
-| Last completed | Phase 2 Cascade Controller (app/cascade.py) and layered verifiers (schema, grounding, rules) implemented; 30/30 unit tests passing; run on 40 dev tickets |
-| In progress | Phase 3 (Smarter verifiers: self-consistency, LLM judge) or Phase 5 (FastAPI backend + Streamlit dashboard) |
-| Next | Phase 3 verifiers or Phase 5 UI dashboard |
+| Phase | 5 (App and Dashboard built) |
+| Last completed | Phase 3 smarter verifiers (consistency, judge) and Phase 5 FastAPI backend (app/main.py with SSE & replay) + Streamlit live dashboard (ui/app.py); 37/37 unit tests passing |
+| In progress | Deployment preparation & final benchmark evaluation runs |
+| Next | Deployment commands/setup, final held-out evaluation (Phase 6), Pareto chart generation, and submission materials |
 | Blockers | None |
 
 ## 3. Facts to fill in (do not guess)
@@ -165,6 +165,19 @@ Fill in as you go.
 ## 11. Session log
 
 Newest first. One short entry per working session.
+
+### Oct 17, 2026 (Session 5)
+
+- Implemented Phase 3 Smarter Verifiers:
+  - `app/verifiers/consistency.py`: Parallel multi-sample verification on Nano using `asyncio.gather`, compares structured decision distributions, adds sample cost to `Verdict.cost`.
+  - `app/verifiers/judge.py`: Uses Nemotron Super to audit candidate answers for multi-issue ticket coverage.
+  - Added unit tests in `tests/test_smarter_verifiers.py`.
+- Implemented Phase 5 Application & Dashboard:
+  - `app/main.py`: FastAPI application supporting `POST /tasks` (with input length limits), `GET /tasks/{task_id}`, `GET /stats`, `GET /stream` (Server-Sent Events for real-time live routing telemetry), and `POST /benchmark/replay` for demo presentation. Added unit tests in `tests/test_api.py`.
+  - `ui/app.py`: Streamlit live dashboard following `design.md` specifications (headline savings banner, left column submit & preset samples, middle live feed with tier badges and escalation reason callouts, right column tier distribution bar chart, and benchmark results tab with Pareto cost vs. accuracy scatter chart).
+- Full test suite: **37/37 unit tests passing** (offline, 0 credits spent).
+- Linting: `ruff` and `black` 100% clean across all 27 Python files.
+- Next: Phase 6 final evaluation scripts & plotting (`eval/plot.py`), deployment guide, and submission materials.
 
 ### Oct 17, 2026 (Session 4)
 

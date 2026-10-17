@@ -78,14 +78,14 @@ Assumes about 3 to 4 focused hours a day.
 
 ### Thu Oct 22: self-consistency
 
-- [ ] SHOULD `verifiers/consistency.py`: 3 parallel Nano samples with `asyncio.gather`, compare structured decisions
-- [ ] SHOULD Count extra sample cost in `Verdict.cost`
-- [ ] SHOULD Run only after cheaper checks pass, make it configurable
+- [x] SHOULD `verifiers/consistency.py`: 3 parallel Nano samples with `asyncio.gather`, compare structured decisions
+- [x] SHOULD Count extra sample cost in `Verdict.cost`
+- [x] SHOULD Run only after cheaper checks pass, make it configurable
 
 ### Fri Oct 23: LLM judge and tuning
 
-- [ ] SHOULD Extract issues from the ticket (Nano call)
-- [ ] SHOULD `verifiers/judge.py`: Super checks each issue is addressed
+- [x] SHOULD Extract issues from the ticket (Nano call)
+- [x] SHOULD `verifiers/judge.py`: Super checks each issue is addressed
 - [ ] **MUST** Measure false-pass and false-fail rates on dev
 - [ ] **MUST** Tune prompts and thresholds on dev only
 - [ ] **MUST** Record findings in `memory.md`
@@ -109,10 +109,10 @@ Skip this phase if more than half a day behind.
 
 ### Sun Oct 25: backend and dashboard
 
-- [ ] **MUST** `app/main.py`: `POST /tasks`, `GET /tasks/{id}`, `GET /stream` (SSE), `GET /stats`
-- [ ] **MUST** `ui/app.py` Live tab per `design.md`: submit box, samples, live feed, savings banner, tier distribution
-- [ ] SHOULD `POST /benchmark/replay` for the demo
-- [ ] **MUST** Plain error and empty states
+- [x] **MUST** `app/main.py`: `POST /tasks`, `GET /tasks/{id}`, `GET /stream` (SSE), `GET /stats`
+- [x] **MUST** `ui/app.py` Live tab per `design.md`: submit box, samples, live feed, savings banner, tier distribution
+- [x] SHOULD `POST /benchmark/replay` for the demo
+- [x] **MUST** Plain error and empty states
 
 ### Mon Oct 26: deploy
 

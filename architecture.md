@@ -38,7 +38,7 @@ Two paths share one log:
 | Logger | `app/db.py` | SQLite writes and reads |
 | Schemas | `app/schemas.py` | Pydantic models for tasks, replies, verdicts |
 | Eval harness | `eval/` | Benchmark, grader, plots |
-| Dashboard | `ui/app.py` | Live routing view and cost counter |
+| Dashboard | `ui/dashboard.py` | Live routing view and cost counter |
 
 ## 3. Request lifecycle
 

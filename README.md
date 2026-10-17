@@ -128,7 +128,7 @@ This calls each tier once and prints the reply and token usage.
 
 ```bash
 uvicorn app.main:app --reload          # API on http://localhost:8000
-streamlit run ui/app.py                # Dashboard on http://localhost:8501
+streamlit run ui/dashboard.py          # Dashboard on http://localhost:8501
 ```
 
 ### Run the evaluation

@@ -10,7 +10,7 @@ sleep 2
 
 # Run Streamlit frontend in the foreground
 echo "Starting Cascade Streamlit Dashboard on port 8501..."
-streamlit run ui/app.py \
+streamlit run ui/dashboard.py \
     --server.port=8501 \
     --server.address=0.0.0.0 \
     --server.headless=true \

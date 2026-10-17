@@ -37,7 +37,7 @@ This guide describes how to run and deploy the **Cascade** cost-aware model rout
 
 4. **Start the Streamlit Live Dashboard:**
    ```bash
-   streamlit run ui/app.py
+   streamlit run ui/dashboard.py
    ```
    Live dashboard available at: `http://localhost:8501`.
 

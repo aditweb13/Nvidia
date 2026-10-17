@@ -1,3 +1,15 @@
+---
+title: Cascade Nemotron Router
+emoji: ⚡
+colorFrom: indigo
+colorTo: teal
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+short_description: Cost-Aware Nemotron Model Router for ShopEasy
+---
+
 # Cascade
 
 **A cost-aware model router for AI agents, built on NVIDIA Nemotron and Nebius Token Factory.**

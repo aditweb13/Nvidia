@@ -9,9 +9,9 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 &
 sleep 2
 
 # Run Streamlit frontend in the foreground
-echo "Starting Cascade Streamlit Dashboard on port 8501..."
+echo "Starting Cascade Streamlit Dashboard on port 7860..."
 streamlit run ui/dashboard.py \
-    --server.port=8501 \
+    --server.port=7860 \
     --server.address=0.0.0.0 \
     --server.headless=true \
     --browser.gatherUsageStats=false

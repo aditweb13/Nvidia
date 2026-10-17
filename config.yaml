@@ -1,0 +1,42 @@
+# Cascade Configuration
+# Environment variables override values in this file.
+
+app:
+  name: "Cascade"
+  env: "development"
+  log_level: "INFO"
+
+routing:
+  strategy: "cascade"  # "cascade" or "predict" (stretch)
+  tiers:
+    - nano
+    - super
+    - ultra
+  escalate_with_feedback: true
+  max_retries: 3
+  backoff_factor: 1.5
+
+verifiers:
+  order:
+    - schema
+    - grounding
+    - rules
+    - consistency  # Phase 3
+    - judge        # Phase 3
+  consistency:
+    enabled: false
+    samples: 3
+    temperature: 0.7
+  judge:
+    enabled: false
+    tier: "super"
+  rules:
+    return_window_days: 30
+    store_credit_window_days: 60
+
+database:
+  path: "data/cascade.db"
+
+cache:
+  enabled: true
+  dir: ".cache/responses"

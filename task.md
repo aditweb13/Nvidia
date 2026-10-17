@@ -17,11 +17,11 @@ Assumes about 3 to 4 focused hours a day.
 - [ ] **MUST** Record exact model IDs for Nemotron Nano, Super and Ultra in `memory.md`
 - [ ] **MUST** Record per-token prices in `memory.md`
 - [ ] **MUST** Check: tool/function calling per tier, JSON mode, logprobs availability
-- [ ] **MUST** Create the GitHub repo with an MIT `LICENSE`
-- [ ] **MUST** Add `.gitignore` (including `.env`, `data/cascade.db`, `.venv`)
-- [ ] **MUST** Add `.env.example` and `requirements.txt`
-- [ ] **MUST** Commit the docs (`README.md`, `PRD.md`, `architecture.md`, `design.md`, `rules.md`, `task.md`, `memory.md`)
-- [ ] **MUST** Write `scripts/hello.py`: one call per tier, print reply and token usage
+- [x] **MUST** Create the GitHub repo with an MIT `LICENSE`
+- [x] **MUST** Add `.gitignore` (including `.env`, `data/cascade.db`, `.venv`)
+- [x] **MUST** Add `.env.example` and `requirements.txt`
+- [x] **MUST** Commit the docs (`README.md`, `PRD.md`, `architecture.md`, `design.md`, `rules.md`, `task.md`, `memory.md`)
+- [x] **MUST** Write `scripts/hello.py`: one call per tier, print reply and token usage
 
 **Done when:** `python scripts/hello.py` prints a reply and token counts from all three tiers.
 

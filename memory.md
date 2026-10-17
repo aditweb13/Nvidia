@@ -28,10 +28,10 @@ Update at the end of each session.
 |---|---|
 | Date | Oct 17, 2026 |
 | Phase | 0 (setup) |
-| Last completed | Planning and documentation |
-| In progress | Token Factory account and API access |
-| Next | `scripts/hello.py`, record model IDs and prices |
-| Blockers | None yet |
+| Last completed | MIT LICENSE, .gitignore, .env.example, requirements.txt, config loader, scripts/hello.py, unit tests (4/4 passed) |
+| In progress | Token Factory credentials, exact model IDs, and catalog pricing from user |
+| Next | Phase 1 (mock data & tools in app/tools.py, unit tests) and Phase 0 live hello test upon receiving API credentials |
+| Blockers | Awaiting Token Factory API key, base URL, exact model IDs, and prices |
 
 ## 3. Facts to fill in (do not guess)
 
@@ -166,7 +166,16 @@ Fill in as you go.
 
 Newest first. One short entry per working session.
 
-### Oct 17, 2026
+### Oct 17, 2026 (Session 2)
+
+- Implemented repo scaffolding: MIT LICENSE, `.gitignore`, `.env.example`, `requirements.txt`.
+- Implemented `app/config.py` with Pydantic BaseSettings loading from `.env` and `config.yaml` (no hardcoded model IDs/prices, strict typing).
+- Created `scripts/hello.py` with support for live Token Factory calls and offline `--mock` execution.
+- Added test scaffolding with `pytest.ini` and `tests/test_config.py`. All 4 tests passed offline. Formatted and linted cleanly with `black` and `ruff`.
+- Ticked completed items in `task.md`.
+- Next: Obtain Token Factory API credentials, exact model IDs, and catalog pricing from user; proceed with Phase 1 mock data, tools, and benchmark.
+
+### Oct 17, 2026 (Session 1)
 
 - Chose project, wrote README, PRD, architecture, design, rules, task and memory files.
 - Next: set up Token Factory access and write `scripts/hello.py`.

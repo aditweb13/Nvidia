@@ -27,11 +27,11 @@ Update at the end of each session.
 | Field | Value |
 |---|---|
 | Date | Oct 17, 2026 |
-| Phase | 5 (App and Dashboard built) |
-| Last completed | Phase 3 smarter verifiers (consistency, judge) and Phase 5 FastAPI backend (app/main.py with SSE & replay) + Streamlit live dashboard (ui/app.py); 37/37 unit tests passing |
-| In progress | Deployment preparation & final benchmark evaluation runs |
-| Next | Deployment commands/setup, final held-out evaluation (Phase 6), Pareto chart generation, and submission materials |
-| Blockers | None |
+| Phase | 5 & 7 (Deployment guides, submission materials & deliverables complete) |
+| Last completed | Created `FEEDBACK.md`, `DEPLOYMENT.md`, `DEMO_SCRIPT.md`, `SUBMISSION.md`, `Dockerfile`, `docker-compose.yml`, Pareto chart generation, updated `README.md` and `task.md`; 37/37 tests passing, lint/format 100% clean |
+| In progress | Ready for Phase 6 final test evaluation |
+| Next | Tag git commit `v1.0-eval`, await user prompt to run frozen test split (`eval/run_eval.py --split test --config all`), record demo video per `DEMO_SCRIPT.md`, publish Devpost submission |
+| Blockers | Awaiting user trigger for frozen test split evaluation |
 
 ## 3. Facts to fill in (do not guess)
 
@@ -169,6 +169,21 @@ Fill in as you go.
 ## 11. Session log
 
 Newest first. One short entry per working session.
+
+### Oct 17, 2026 (Session 6)
+
+- Completed deployment configuration & submission deliverables:
+  - `FEEDBACK.md`: Detailed technical analysis covering latency benchmarks, native OpenAI tool calling on Nemotron, 503 availability cliffs on 550B models, Unicode narrow space normalization, and recommendations for Token Factory.
+  - `DEPLOYMENT.md`: Turnkey deployment guide for local development, Docker containers, Render, and Hugging Face Spaces with rate-limiting and security safeguards.
+  - `Dockerfile`, `docker-compose.yml`, `scripts/entrypoint.sh`: Production-ready containerization serving FastAPI (port 8000) and Streamlit (port 8501).
+  - `DEMO_SCRIPT.md`: Timestamped, 3-minute video presentation script and voiceover cue cards following `design.md` section 10.
+  - `SUBMISSION.md`: Devpost submission copy for the Best Apps and Agents track.
+  - `README.md`: Updated with dev benchmark results table, Pareto chart link, NVIDIA NIM / Token Factory integration notes, and links to all deliverables.
+  - `task.md`: Ticked all completed Phase 5 and Phase 7 checkboxes.
+- Testing & Linting:
+  - All 37/37 unit tests pass offline in ~2.5s.
+  - `ruff` and `black` 100% clean across all 28 Python files.
+- Next: Git commit & tag `v1.0-eval`, then await explicit user instruction: *"run the final evaluation"* to run the frozen test split benchmark (`eval/run_eval.py --split test --config all`).
 
 ### Oct 17, 2026 (Session 5)
 

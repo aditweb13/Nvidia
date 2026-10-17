@@ -6,6 +6,7 @@ Outputs: eval/results/pareto.png
 
 import json
 from pathlib import Path
+
 import matplotlib.pyplot as plt
 
 _RESULTS_DIR = Path(__file__).resolve().parent / "results"
@@ -18,10 +19,30 @@ def generate_pareto_chart():
 
     # Default measured / calibrated data points across 4 configurations
     data = {
-        "Nano only": {"cost": 0.00060, "accuracy": 62.5, "color": "#008080", "marker": "o"},
-        "Super only": {"cost": 0.00225, "accuracy": 85.0, "color": "#2b6cb0", "marker": "s"},
-        "Ultra only": {"cost": 0.00900, "accuracy": 95.0, "color": "#6b46c1", "marker": "^"},
-        "Cascade (Ours)": {"cost": 0.00285, "accuracy": 92.5, "color": "#38a169", "marker": "*"},
+        "Nano only": {
+            "cost": 0.00060,
+            "accuracy": 62.5,
+            "color": "#008080",
+            "marker": "o",
+        },
+        "Super only": {
+            "cost": 0.00225,
+            "accuracy": 85.0,
+            "color": "#2b6cb0",
+            "marker": "s",
+        },
+        "Ultra only": {
+            "cost": 0.00900,
+            "accuracy": 95.0,
+            "color": "#6b46c1",
+            "marker": "^",
+        },
+        "Cascade (Ours)": {
+            "cost": 0.00285,
+            "accuracy": 92.5,
+            "color": "#38a169",
+            "marker": "*",
+        },
     }
 
     # Load from saved summary file if available
@@ -39,12 +60,18 @@ def generate_pareto_chart():
                     label = mapping.get(k)
                     if label in data and v.get("accuracy", 0) > 0:
                         data[label]["cost"] = v.get("total_cost", data[label]["cost"])
-                        data[label]["accuracy"] = v.get("accuracy", data[label]["accuracy"])
-        except Exception as e:
+                        data[label]["accuracy"] = v.get(
+                            "accuracy", data[label]["accuracy"]
+                        )
+        except (OSError, json.JSONDecodeError, KeyError) as e:
             print(f"Warning reading {_SUMMARY_FILE}: {e}")
 
     # Set up dark-friendly styled plot
-    plt.style.use("seaborn-v0_8-whitegrid" if "seaborn-v0_8-whitegrid" in plt.style.available else "default")
+    plt.style.use(
+        "seaborn-v0_8-whitegrid"
+        if "seaborn-v0_8-whitegrid" in plt.style.available
+        else "default"
+    )
     fig, ax = plt.subplots(figsize=(9, 6), dpi=300)
 
     # Plot points
@@ -72,7 +99,12 @@ def generate_pareto_chart():
             (pt["cost"] + offset_x, pt["accuracy"] + offset_y),
             fontsize=9.5,
             fontweight="bold" if "Cascade" in label else "normal",
-            bbox=dict(boxstyle="round,pad=0.3", fc="white", ec=pt["color"], alpha=0.85),
+            bbox={
+                "boxstyle": "round,pad=0.3",
+                "fc": "white",
+                "ec": pt["color"],
+                "alpha": 0.85,
+            },
             zorder=6,
         )
 
@@ -83,7 +115,12 @@ def generate_pareto_chart():
     ax.plot(xs, ys, linestyle="--", color="#a0aec0", alpha=0.6, zorder=3)
 
     # Labels and Titles
-    ax.set_title("Pareto Frontier: Cost vs. Accuracy Tradeoff (ShopEasy Benchmark)", fontsize=13, fontweight="bold", pad=14)
+    ax.set_title(
+        "Pareto Frontier: Cost vs. Accuracy Tradeoff (ShopEasy Benchmark)",
+        fontsize=13,
+        fontweight="bold",
+        pad=14,
+    )
     ax.set_xlabel("Total Cost (USD)", fontsize=11, fontweight="bold", labelpad=8)
     ax.set_ylabel("Graded Accuracy (%)", fontsize=11, fontweight="bold", labelpad=8)
     ax.set_ylim(40, 102)
@@ -100,7 +137,12 @@ def generate_pareto_chart():
             transform=ax.transAxes,
             fontsize=10,
             verticalalignment="bottom",
-            bbox=dict(boxstyle="round,pad=0.6", facecolor="#e6fffa", edgecolor="#38a169", lw=1.5),
+            bbox={
+                "boxstyle": "round,pad=0.6",
+                "facecolor": "#e6fffa",
+                "edgecolor": "#38a169",
+                "lw": 1.5,
+            },
         )
 
     ax.legend(loc="lower right", frameon=True, framealpha=0.9)

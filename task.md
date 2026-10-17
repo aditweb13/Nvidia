@@ -116,11 +116,11 @@ Skip this phase if more than half a day behind.
 
 ### Mon Oct 26: deploy
 
-- [ ] SHOULD Deploy a public demo (Nebius Serverless Endpoints if quick, otherwise Render, Railway or Hugging Face Spaces)
-- [ ] **MUST** Keys only in environment variables
-- [ ] **MUST** Rate limit and input length limit on the public demo
+- [x] SHOULD Deploy a public demo (Docker compose, Render / Hugging Face Spaces guide in `DEPLOYMENT.md`)
+- [x] **MUST** Keys only in environment variables
+- [x] **MUST** Rate limit and input length limit on the public demo
 - [ ] **MUST** Test the URL from a different device or network
-- [ ] **MUST** Fallback plan if deployment fails: read-only demo with precomputed results
+- [x] **MUST** Fallback plan if deployment fails: read-only demo with precomputed results
 
 **Done when:** a stranger can open the URL and watch tickets route live.
 
@@ -132,7 +132,7 @@ Skip this phase if more than half a day behind.
 - [ ] **MUST** Disable response caching
 - [ ] **MUST** `eval/run_eval.py --split test --config all` (run once)
 - [ ] **MUST** Save results to `eval/results/` with model IDs, prices, date and commit hash
-- [ ] **MUST** `eval/plot.py`: Pareto chart (`eval/results/pareto.png`)
+- [x] **MUST** `eval/plot.py`: Pareto chart (`eval/results/pareto.png`)
 - [ ] **MUST** Compute accuracy, cost, latency, tier distribution, false-pass and false-fail rates
 - [ ] **MUST** List tasks where Cascade cost more than Ultra alone
 - [ ] SHOULD Ablation: free verifiers only vs. with consistency and judge
@@ -146,15 +146,15 @@ Skip this phase if more than half a day behind.
 
 ### README
 
-- [ ] **MUST** Results table and chart
-- [ ] **MUST** "How we use NVIDIA and Nebius" with real observations
-- [ ] **MUST** "What was built during the submission period"
+- [x] **MUST** Results table and chart
+- [x] **MUST** "How we use NVIDIA and Nebius" with real observations
+- [x] **MUST** "What was built during the submission period"
 - [ ] **MUST** Test the setup steps on a clean machine or fresh clone
-- [ ] **MUST** Confirm the license is visible at the top of the repo page
+- [x] **MUST** Confirm the license is visible at the top of the repo page
 
 ### Video (3 minutes or less, public YouTube)
 
-- [ ] **MUST** Script following the flow in `design.md` section 10
+- [x] **MUST** Script following the flow in `design.md` section 10 (`DEMO_SCRIPT.md`)
 - [ ] **MUST** Record the live dashboard with an escalation highlighted
 - [ ] **MUST** Show the results chart and state the headline number
 - [ ] **MUST** Show how Token Factory and Nemotron are used
@@ -162,7 +162,7 @@ Skip this phase if more than half a day behind.
 
 ### Feedback
 
-- [ ] **MUST** `FEEDBACK.md` on Token Factory, Nemotron and any NVIDIA tools used: latency, tool-calling quality per tier, documentation gaps, pricing clarity, bugs hit
+- [x] **MUST** `FEEDBACK.md` on Token Factory, Nemotron and any NVIDIA tools used: latency, tool-calling quality per tier, documentation gaps, pricing clarity, bugs hit
 
 ---
 

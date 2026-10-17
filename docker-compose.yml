@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  cascade:
+    build: .
+    container_name: cascade-app
+    ports:
+      - "8000:8000"  # FastAPI API
+      - "8501:8501"  # Streamlit UI
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./eval/results:/app/eval/results
+    restart: unless-stopped

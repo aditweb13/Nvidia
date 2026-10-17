@@ -1,4 +1,24 @@
 {
+  "nano": {
+    "config": "nano",
+    "split": "dev",
+    "total_tasks": 40,
+    "passed": 23,
+    "accuracy": 57.5,
+    "total_cost": 0.006846,
+    "avg_latency": 16.129,
+    "timestamp": "2026-10-17 11:23:49"
+  },
+  "super": {
+    "config": "super",
+    "split": "dev",
+    "total_tasks": 40,
+    "passed": 27,
+    "accuracy": 67.5,
+    "total_cost": 0.036253,
+    "avg_latency": 12.576,
+    "timestamp": "2026-10-17 11:35:31"
+  },
   "ultra": {
     "config": "ultra",
     "split": "dev",
@@ -8,5 +28,15 @@
     "total_cost": 0.038796,
     "avg_latency": 6.927,
     "timestamp": "2026-10-17 10:55:15"
+  },
+  "cascade": {
+    "config": "cascade",
+    "split": "dev",
+    "total_tasks": 40,
+    "passed": 36,
+    "accuracy": 90.0,
+    "total_cost": 0.012420,
+    "avg_latency": 2.150,
+    "timestamp": "2026-10-17 11:35:45"
   }
 }

@@ -1,0 +1,414 @@
+{
+  "summary": {
+    "config": "nano",
+    "split": "dev",
+    "total_tasks": 40,
+    "passed": 23,
+    "accuracy": 57.5,
+    "total_cost": 0.006846,
+    "avg_latency": 16.129,
+    "timestamp": "2026-10-17 11:23:49"
+  },
+  "details": [
+    {
+      "task_id": "ticket_001",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.933,
+      "cost": 0.000166,
+      "latency": 11.189,
+      "reply": "Your order ORD-1001 was delivered on October 14, 2026 via FedEx (tracking number TRK94001230). The package was left on your front porch. If you need any further assistance, please let us know.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_002",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.9,
+      "cost": 0.00013,
+      "latency": 9.576,
+      "reply": "Certainly! Your order ORD-1002 was delivered by UPS. The tracking number is TRK1Z999001, and the delivery was confirmed on August 20, 2026.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_003",
+      "tier": "nano",
+      "passed": true,
+      "score": 1.0,
+      "cost": 9.6e-05,
+      "latency": 4.985,
+      "reply": "Your order ORD-1004 is currently in the 'Processing' status. It has not been shipped yet, as indicated by the null delivery date.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_004",
+      "tier": "nano",
+      "passed": true,
+      "score": 1.0,
+      "cost": 0.000139,
+      "latency": 16.227,
+      "reply": "Sure! Here is the tracking link for your order ORD-1005: https://www.usps.com/track/TRK94055102. Your order is currently in transit and is expected to arrive by Oct 18.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_005",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.9,
+      "cost": 0.000142,
+      "latency": 11.363,
+      "reply": "In order ORD-1008 you bought 2 Classic Oxford Shirts (price $40.00 each) and 1 Silk Tie (price $30.00). The subtotal for these items is $110.00.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_006",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.4,
+      "cost": 8.6e-05,
+      "latency": 8.239,
+      "reply": "Yes, order ORD-1014 has left the warehouse and is currently in transit.",
+      "decision": null
+    },
+    {
+      "task_id": "ticket_007",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.667,
+      "cost": 8.7e-05,
+      "latency": 3.991,
+      "reply": "Order ORD-1009 was delivered on **September\u202f29,\u202f2026**.",
+      "decision": null
+    },
+    {
+      "task_id": "ticket_008",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.7,
+      "cost": 0.000111,
+      "latency": 19.223,
+      "reply": "The total amount charged for order ORD-1015 is $129.99.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_009",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.533,
+      "cost": 8e-05,
+      "latency": 5.796,
+      "reply": "Yes, order\u202fORD-1017 used the discount code **FALL10**.",
+      "decision": null
+    },
+    {
+      "task_id": "ticket_010",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.9,
+      "cost": 0.000176,
+      "latency": 12.829,
+      "reply": "The carrier for order ORD-1019 is UPS, with tracking number TRK1Z999019, and it was delivered on October 12, 2026. The delivery address is not included in the available order details.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_011",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.9,
+      "cost": 0.00015,
+      "latency": 22.097,
+      "reply": "Your order ORD-1022 is currently pending. It was placed on October 16, 2026, with a total amount of $60.99 (Heavyweight Leather Belt $55.00 + $5.99 shipping). The expected delivery date is not yet set, and no tracking number has been assigned. A cancellation request was made within 2 hours of placement.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_012",
+      "tier": "nano",
+      "passed": true,
+      "score": 1.0,
+      "cost": 0.000132,
+      "latency": 4.537,
+      "reply": "Your order ORD-1025, placed on October 11, 2026, is currently with UPS (tracking number TRK1Z999025) and is marked as \"Out for delivery today.\" The carrier expects to deliver the Waterproof Deck Boots (SKU-789) to you today. The order total is $120.00, and the payment was captured on the order date.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_013",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.9,
+      "cost": 0.000194,
+      "latency": 15.37,
+      "reply": "Hello Wendy, your order ORD-1023 was delivered on October 07 via UPS (tracking number TRK1Z999023). It includes: 1 Celestial Night Lamp ($42.00) and 1 Starry Sky Tapestry ($25.00). The total amount for the order is $72.99 (subtotal $67.00 + $5.99 shipping).",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_014",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.633,
+      "cost": 9.4e-05,
+      "latency": 3.795,
+      "reply": "The carrier used for order ORD-1027 was FedEx.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_015",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.7,
+      "cost": 9.3e-05,
+      "latency": 6.916,
+      "reply": "We couldn't find any order with ID ORD-9999. Please double-check the order number or let us know if you need further assistance.",
+      "decision": "order_not_found"
+    },
+    {
+      "task_id": "ticket_016",
+      "tier": "nano",
+      "passed": true,
+      "score": 1.0,
+      "cost": 0.000109,
+      "latency": 25.065,
+      "reply": "Our standard return window is 30 days from the confirmed delivery date. If you return the item within 30 days, you\u2019ll receive a full refund to the original payment method. Returns made between 31 and 60 days after delivery are eligible for ShopEasy Store Credit only, and no cash or card refunds will be issued.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_017",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.8,
+      "cost": 0.000102,
+      "latency": 8.25,
+      "reply": "According to our store policy, you must report any damaged, broken, or defective items within 7 days of your delivery date. Reporting after this window may prevent us from processing a return or refund for that item.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_018",
+      "tier": "nano",
+      "passed": true,
+      "score": 1.0,
+      "cost": 0.000115,
+      "latency": 12.928,
+      "reply": "Yes, we offer a ShopEasy Store Credit for returns made within 31 to 60 days after the confirmed delivery date. The item must be unworn, undamaged, in its original packaging with tags intact. The standard return shipping fee of $5.99 will be deducted from the credit unless the item arrived damaged or was the wrong item.",
+      "decision": "inform_status"
+    },
+    {
+      "task_id": "ticket_041",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.8,
+      "cost": 0.000344,
+      "latency": 35.801,
+      "reply": "Dear Alice, thank you for contacting us. We have located your order ORD-1001, which was delivered on October 14 via FedEx (tracking number TRK94001230). As you are requesting the return within 30 days of delivery, you are eligible for a full refund. We will process a refund of $89.99 (the sweater price) to the original payment method; the $5.99 return shipping fee will be deducted. The refund should appear on your statement within 5\u20137 business days. Please pack the Merino Wool Sweater in its original packaging with tags attached and use the prepaid FedEx label provided. If you have any questions or need further assistance, feel free to let us know.",
+      "decision": "approve_return_refund"
+    },
+    {
+      "task_id": "ticket_042",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.867,
+      "cost": 0.000256,
+      "latency": 19.849,
+      "reply": "Hello Bob, thank you for reaching out. Your order ORD-1002 was delivered on August 20, 2026, and today is October 17, 2026\u201458 days after delivery. According to our policy, items returned between 31 and 60 days from the delivery date are eligible for a ShopEasy store credit (no cash refund). Therefore, we can issue a store credit for the full purchase amount of $130.50 (the subtotal and total amount, with no shipping fee applied). The credit will be added to your account within 3\u20135 business days and can be used for any future purchase. For reference, the tracking number is TRK1Z999001 (UPS) and the status shows delivered on August 20. Please let us know if you have any other questions or need further assistance.",
+      "decision": "offer_store_credit_only"
+    },
+    {
+      "task_id": "ticket_043",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.8,
+      "cost": 0.000205,
+      "latency": 15.338,
+      "reply": "Dear Carlos Gomez,\n\nWe\u2019ve located your order ORD-1003, which was delivered by UPS (tracking number TRK1Z999002) on July\u202f6,\u202f2026. According to our policy, refunds are only available within 30 days of delivery, and store credit is limited to 31\u201160 days. Since this order was delivered more than 100 days ago\u2014well beyond the 60\u2011day window\u2014we are unable to process a cash refund to your card.\n\nIf you have any other concerns regarding this order or need assistance with a different issue, please let us know.\n\nThank you for contacting ShopEasy.",
+      "decision": "deny_return_past_window"
+    },
+    {
+      "task_id": "ticket_044",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.667,
+      "cost": 0.000113,
+      "latency": 11.165,
+      "reply": "Your order ORD-1004 has been successfully cancelled. The total amount of $179.99 (including the $20.00 discount from coupon SAVE20) will be refunded to your original payment method. If you have any further questions or need assistance with a new order, please let us know.",
+      "decision": "cancel_order_approved"
+    },
+    {
+      "task_id": "ticket_045",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.767,
+      "cost": 0.000109,
+      "latency": 7.396,
+      "reply": "Hi Evan, I see your order ORD-1005 is currently \"In Transit\" with an expected delivery by October 18 (tracking number TRK94055102). According to our policy, orders cannot be cancelled once they have moved to the In Transit status. You\u2019ll need to receive the Organic Cotton Bed Sheets (Queen) and then initiate a return if you wish to receive a refund. Let me know if you\u2019d like assistance with the return process.",
+      "decision": "deny_cancellation_in_transit"
+    },
+    {
+      "task_id": "ticket_046",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.8,
+      "cost": 0.000232,
+      "latency": 19.226,
+      "reply": "Hello Ian, thank you for reaching out. Your order ORD-1009, which includes the Polarized Aviator Sunglasses (SKU-602) priced at $160.00, was delivered on September 29. Since it has been 18 days and is within the 30\u2011day full refund window, you are eligible for a 100% refund to the original payment method. The refund will be processed shortly, and you can expect the amount to appear on your card within 3\u20135 business days. Your return shipping label is already generated; just use the tracking number TRK1Z999009 with carrier UPS to send the item back. If you have any further questions, feel free to let us know!",
+      "decision": "approve_return_refund"
+    },
+    {
+      "task_id": "ticket_047",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.867,
+      "cost": 0.000366,
+      "latency": 37.127,
+      "reply": "Hi Julia, thank you for reaching out. Your Ankle Rain Boots (SKU-440) from order ORD-1010 were delivered on September 5, 2026 (42 days ago). Since this is beyond the 30\u2011day full refund window but within the 31\u201160 day store credit window, we can issue a ShopEasy store credit for the returned item. After deducting the $5.99 return shipping fee, the credit amount will be $75.00, which will be applied to your account for future purchases. Please let us know if you\u2019d like to proceed with the return, and we\u2019ll send you a prepaid shipping label and further instructions.",
+      "decision": "offer_store_credit_only"
+    },
+    {
+      "task_id": "ticket_048",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.567,
+      "cost": 0.00013,
+      "latency": 12.018,
+      "reply": "Hi Nancy, I see your order ORD-1014 (Vintage Denim Jacket) was shipped on October 14, 2026 with a total of $100.99. Since the order is already in a shipped status, we\u2019re unable to cancel it at this time. Please receive the package, and once you\u2019ve done so you can initiate a standard return for a full refund. If you need the return label or have any other questions, just let me know!",
+      "decision": "deny_cancellation_in_transit"
+    },
+    {
+      "task_id": "ticket_049",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.9,
+      "cost": 0.000246,
+      "latency": 31.244,
+      "reply": "Dear Oscar Martinez, we have received your request to return the Mechanical Keyboard (RGB) from order ORD-1015, which was delivered on September 24, 2026. Since the delivery was 23 days ago and falls within our 30\u2011day full refund window, you are eligible for a 100% refund of $129.99, less the standard $5.99 return shipping fee, resulting in a refund of $124.00 to your original payment method. Please use the UPS tracking number TRK1Z999015 for the return. Once we receive the returned item in its original condition, we will process the refund within 3\u20135 business days.",
+      "decision": "approve_return_refund"
+    },
+    {
+      "task_id": "ticket_050",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.8,
+      "cost": 0.00023,
+      "latency": 23.717,
+      "reply": "Hello Samantha, we see your Silk Slip Dress (ORD-1019) was delivered on Oct 12 and is within the 30\u2011day full\u2011refund window. You can return it for a refund of $180 minus the $5.99 return shipping fee, resulting in a $174.01 refund to your original payment method. We\u2019ll email a prepaid return label; once we receive the unworn dress in its original packaging, the refund will be processed within 3\u20135 business days.",
+      "decision": "approve_return_refund"
+    },
+    {
+      "task_id": "ticket_051",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.533,
+      "cost": 0.000142,
+      "latency": 8.896,
+      "reply": "Hi Toby, I see your order ORD-1020 was delivered on July 25, 2026, which is 84 days ago\u2014well beyond the 60\u2011day window for any return or credit. As per our policy, items delivered more than 60 days ago are not eligible for return, exchange, or refund. If you have any other concerns, please let me know!",
+      "decision": "deny_return_past_window"
+    },
+    {
+      "task_id": "ticket_052",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.9,
+      "cost": 0.000104,
+      "latency": 8.016,
+      "reply": "Your pending order ORD-1022 has been successfully cancelled. The order was placed on 2026-10-16 with a total amount of $60.99 (Heavyweight Leather Belt $55.00 + $5.99 shipping). Since the order was still in Pending status and the cancellation request was made within the allowed 2\u2011hour window, we have processed the cancellation for you. No further action is required.",
+      "decision": "cancel_order_approved"
+    },
+    {
+      "task_id": "ticket_053",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.7,
+      "cost": 0.000369,
+      "latency": 37.671,
+      "reply": "Dear Wendy, thank you for reaching out. We have located your order ORD-1023, which was delivered on October 07, 2026 (10 days ago). As per our policy, items returned within 30 days are eligible for a full refund. We will process a refund of $67.00 (the subtotal of the Celestial Night Lamp and Starry Sky Tapestry) to your original payment method, after deducting the $5.99 return shipping fee. The return will be handled via UPS using tracking number TRK1Z999023. The refund should appear on your card within 5-7 business days. Please let us know if you need a return label or have any other questions.",
+      "decision": "approve_return_refund"
+    },
+    {
+      "task_id": "ticket_071",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.84,
+      "cost": 0.000205,
+      "latency": 18.14,
+      "reply": "Hello Fiona, I\u2019ve confirmed that two identical $50.99 charges were captured for order ORD-1006 on October 14, 2026. I\u2019ve initiated a refund for the duplicate charge, which will be processed back to your original payment method within 5-7 business days. Your Ceramic Pour-Over Coffee Set is still in the Processing status and has not shipped yet. We expect it to ship within the next 1-2 business days, and I\u2019ll send you a tracking number as soon as it\u2019s dispatched.",
+      "decision": "refund_duplicate_charge"
+    },
+    {
+      "task_id": "ticket_072",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.85,
+      "cost": 0.000296,
+      "latency": 25.457,
+      "reply": "Hello George, I\u2019m very sorry to hear that your Handmade Glass Decanter Set arrived shattered. Your order (ORD-1007) was delivered on October\u202f15, 2026, and we received your report of the damage promptly, which is within the 7\u2011day reporting window required for damaged items. \n\nAccording to our Damaged Item Policy, you may choose either of the following remedies at no cost to you:\n1. **Free immediate replacement** \u2013 we will ship a new decanter set right away, and the return shipping fee for the damaged item will be waived.\n2. **50% refund** \u2013 we will refund half of the purchase price ($62.50) to your original payment method, also without any return shipping charge.\n\nUnfortunately, a full refund is not available for damaged items under our policy. Please let us know which option you would prefer, and we\u2019ll arrange it right away.",
+      "decision": "approve_damaged_remedy"
+    },
+    {
+      "task_id": "ticket_073",
+      "tier": "nano",
+      "passed": true,
+      "score": 0.833,
+      "cost": 0.000178,
+      "latency": 14.629,
+      "reply": "Hi Hannah, thank you for reaching out. I see your order ORD-1008 was placed on 2026-10-16 with a total of $110.00. Since you contacted us within 24 hours of placing the order and the SAVE15 coupon is valid, we can issue a one-time store credit for the 15% promotional discount (15% of $110.00 = $16.50). This credit will be added to your account and can be used on any future purchase. Unfortunately, we cannot apply the coupon retroactively to the original order or issue a cash refund. If you have any other questions or need further assistance, please let me know!",
+      "decision": "offer_store_credit_only"
+    },
+    {
+      "task_id": "ticket_074",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.633,
+      "cost": 0.000161,
+      "latency": 28.722,
+      "reply": "Hi Kevin, I'm sorry to hear your Ergonomic Office Chair (order ORD-1011) has shown no tracking updates since October 4th. As of today (October 17) it's been 13 days without a scan, which under our Lost Package Policy qualifies the shipment as lost. We\u2019ll immediately investigate with FedEx and arrange a replacement delivery to get the chair to you before Monday if possible. If a replacement cannot be arranged, we\u2019ll process a full refund to your original payment method. Please let us know the best way to proceed, and we\u2019ll keep you updated.",
+      "decision": "declare_lost_package"
+    },
+    {
+      "task_id": "ticket_075",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.227,
+      "cost": 0.00021,
+      "latency": 19.167,
+      "reply": "Hi Laura, I'm sorry you received the Green Tactical Outdoor Backpack instead of the Black one you ordered. Your order ORD-1012 was delivered on 2026-10-16, which is within the 30\u2011day return window. Because the item was the wrong color, you are eligible for a full refund to your original payment method with no shipping fee charged. We will email you a prepaid UPS return label right away. Once we receive the returned backpack, we\u2019ll process the $121.50 refund (including the $5.99 shipping fee waiver) within 5\u20137 business days. Please let us know if you have any other questions.",
+      "decision": "approve_return_refund"
+    },
+    {
+      "task_id": "ticket_076",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.733,
+      "cost": 0.000198,
+      "latency": 19.492,
+      "reply": "Hello Ron, we see your order ORD-1018 placed on October 15, 2026 with two $99.98 charges. Since the order status is currently Processing, we can cancel it before it leaves the warehouse. We'll cancel the order and issue a refund for the duplicate $99.98 charge. No tracking number is available yet as the order has not shipped. Please let us know if you need any further assistance.",
+      "decision": "cancel_order_approved"
+    },
+    {
+      "task_id": "ticket_077",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.733,
+      "cost": 0.000218,
+      "latency": 25.815,
+      "reply": "Hi Uma, I\u2019m sorry to hear that the zipper on your Yellow Martial Arts Tracksuit (order ORD-1021) broke right after delivery. Since you reported the issue within 7 days of the confirmed delivery date (Oct\u202f13), you\u2019re eligible for a remedy. You can choose either: 1) a free immediate replacement shipment of a new tracksuit (we\u2019ll cover all shipping costs), or 2) a full refund of $99.00 to the original payment method (the charge was captured on Oct\u202f9). Please let me know which option you\u2019d prefer, and I\u2019ll get it processed right away.",
+      "decision": "approve_damaged_remedy"
+    },
+    {
+      "task_id": "ticket_078",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.8,
+      "cost": 0.000178,
+      "latency": 13.302,
+      "reply": "Dear Zachary, I\u2019m very sorry for the inconvenience caused by the duplicate $189.00 charge on your order ORD-1026. Our records show two captures on October 14, 2026 (18:30:10 and 18:30:12). We have initiated a refund for the duplicate $189.00 charge and it will be returned to your original payment method within 5\u20137 business days. Your order is currently processing, and once it ships we will provide the tracking details. Thank you for your patience, and please let us know if there\u2019s anything else we can do for you.",
+      "decision": "refund_duplicate_charge"
+    },
+    {
+      "task_id": "ticket_079",
+      "tier": "nano",
+      "passed": false,
+      "score": 0.4,
+      "cost": 0.000154,
+      "latency": 10.612,
+      "reply": "Hi Monica, I\u2019m sorry to hear that your Handmade Wool Scarf arrived with dark oily stains. Since the item was delivered on October 14 and is within the 30\u2011day window, we can arrange a clean replacement for you at no extra cost. A new scarf will be shipped out promptly, and I\u2019ll send you the new tracking number as soon as it\u2019s available. Thank you for your patience, and please let me know if there\u2019s anything else I can help with.",
+      "decision": "approve_damaged_remedy"
+    }
+  ]
+}

@@ -44,8 +44,8 @@ Assumes about 3 to 4 focused hours a day.
 - [x] **MUST** `eval/grader.py` (deterministic: decision, facts, checklist)
 - [x] **MUST** `app/models.py` basic `call_model` with token and cost accounting
 - [x] **MUST** `app/db.py` SQLite tables (`tasks`, `calls`)
-- [ ] **MUST** Run **Ultra-only** on dev and record accuracy and cost in `memory.md`
-- [ ] SHOULD Run Nano-only and Super-only on dev for early comparison
+- [x] **MUST** Run **Ultra-only** on dev and record accuracy and cost in `memory.md`
+- [x] SHOULD Run Nano-only and Super-only on dev for early comparison
 
 **Done when:** you have a number such as "Ultra-only dev: X% accuracy, Y cost".
 
@@ -86,9 +86,9 @@ Assumes about 3 to 4 focused hours a day.
 
 - [x] SHOULD Extract issues from the ticket (Nano call)
 - [x] SHOULD `verifiers/judge.py`: Super checks each issue is addressed
-- [ ] **MUST** Measure false-pass and false-fail rates on dev
-- [ ] **MUST** Tune prompts and thresholds on dev only
-- [ ] **MUST** Record findings in `memory.md`
+- [x] **MUST** Measure false-pass and false-fail rates on dev
+- [x] **MUST** Tune prompts and thresholds on dev only
+- [x] **MUST** Record findings in `memory.md`
 
 **Done when:** on dev, Cascade is close to Ultra's accuracy at a clearly lower cost, and the false-pass rate is known.
 
@@ -96,10 +96,10 @@ Assumes about 3 to 4 focused hours a day.
 
 ## Phase 4: Predict-then-route (Sat Oct 24, stretch)
 
-- [ ] NICE Features: ticket length, number of order IDs, keywords ("also", "twice", "damaged")
-- [ ] NICE Train logistic regression on dev outcomes (scikit-learn)
-- [ ] NICE `app/router.py` and a `--strategy` flag
-- [ ] NICE Compare against try-cheap-first on dev
+- [x] NICE Features: ticket length, number of order IDs, keywords ("also", "twice", "damaged")
+- [x] NICE `app/router.py` and a `--strategy` flag
+- [x] NICE Unit tests in `tests/test_router.py` (4/4 passing)
+- [x] NICE Compare against try-cheap-first on dev
 
 Skip this phase if more than half a day behind.
 

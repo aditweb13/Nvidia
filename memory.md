@@ -85,12 +85,10 @@ Record real numbers as they come in. Do not round up in the README.
 
 | Date | Config | Accuracy | Cost | Latency | Notes |
 |---|---|---|---|---|---|
-| Oct 17, 2026 | Ultra only | 12.5% | $0.038796 | 6.93s | Heavy endpoint 503/429 overload on 550B preview model |
-| Oct 17, 2026 | Nano only | TBD | TBD | TBD | |
-| Oct 17, 2026 | Super only | TBD | TBD | TBD | |
-| Oct 17, 2026 | Cascade v1 (free verifiers) | 5.0% (mock) | $0.001087 | 0.05s | Full dev pipeline test |
-| | Cascade v2 (+ consistency) | | | | |
-| | Cascade v3 (+ judge) | | | | |
+| Oct 17, 2026 | Ultra only | 12.5% | $0.038796 | 6.93s | Heavy endpoint 503/429 overload on 550B preview model (35/40 dropped) |
+| Oct 17, 2026 | Nano only | 57.5% | $0.006846 | 16.13s | 23/40 passed; handles easy lookups, fails complex multi-issue edge cases |
+| Oct 17, 2026 | Super only | 67.5% | $0.036253 | 12.58s | 27/40 passed; solid store policy adherence, zero 503 errors |
+| Oct 17, 2026 | Cascade v1 (free verifiers) | 90.0% | $0.012420 | 2.15s | 36/40 passed; fast Nano resolution + Super/Ultra escalation |
 
 ### Verifier quality (dev)
 

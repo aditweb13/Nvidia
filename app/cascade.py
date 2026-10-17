@@ -96,6 +96,7 @@ async def run_cascade(
     task_input: Task | str,
     mock: bool = False,
     use_cache: bool | None = None,
+    strategy: str = "try_cheap_first",
 ) -> CascadeResult:
     """Execute the Cascade routing state machine for a single task."""
     if isinstance(task_input, str):
@@ -104,9 +105,28 @@ async def run_cascade(
         task = task_input
 
     yaml_config = get_yaml_config()
-    tiers: list[str] = yaml_config.get("routing", {}).get(
+    default_tiers: list[str] = yaml_config.get("routing", {}).get(
         "tiers", ["nano", "super", "ultra"]
     )
+
+    if strategy == "predict_first":
+        from app.router import predict_starting_tier
+
+        predicted_start = predict_starting_tier(task.ticket_text)
+        tier_hierarchy = ["nano", "super", "ultra"]
+        if predicted_start in tier_hierarchy:
+            start_pos = tier_hierarchy.index(predicted_start)
+            tiers = tier_hierarchy[start_pos:]
+        else:
+            tiers = default_tiers
+        logger.info(
+            "Strategy 'predict_first': starting at %s (tiers=%s) for task %s",
+            tiers[0].upper(),
+            tiers,
+            task.task_id,
+        )
+    else:
+        tiers = default_tiers
 
     context_str, tool_outputs = _build_prompt_context(task)
 

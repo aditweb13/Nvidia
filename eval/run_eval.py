@@ -168,6 +168,16 @@ async def run_single_model_task(
     }
 
 
+def _load_json(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
 def _save_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
@@ -217,7 +227,7 @@ async def _run_evaluation_async(
     results_dir = Path(__file__).resolve().parent / "results"
     results_dir.mkdir(parents=True, exist_ok=True)
 
-    summary_records = {}
+    summary_records = _load_json(results_dir / f"{split}_summary.json")
 
     for cfg in configs_to_run:
         logger.info("=== Running evaluation for config: %s ===", cfg.upper())

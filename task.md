@@ -14,9 +14,9 @@ Assumes about 3 to 4 focused hours a day.
 - [ ] **MUST** Sign up for the Nebius Builder Program for credits
 - [ ] **MUST** Create a Token Factory account and API key
 - [ ] **MUST** Read the Token Factory docs (base URL, auth, chat completions, tool calling)
-- [ ] **MUST** Record exact model IDs for Nemotron Nano, Super and Ultra in `memory.md`
+- [x] **MUST** Record exact model IDs for Nemotron Nano, Super and Ultra in `memory.md`
 - [ ] **MUST** Record per-token prices in `memory.md`
-- [ ] **MUST** Check: tool/function calling per tier, JSON mode, logprobs availability
+- [x] **MUST** Check: tool/function calling per tier, JSON mode, logprobs availability
 - [x] **MUST** Create the GitHub repo with an MIT `LICENSE`
 - [x] **MUST** Add `.gitignore` (including `.env`, `data/cascade.db`, `.venv`)
 - [x] **MUST** Add `.env.example` and `requirements.txt`
@@ -31,10 +31,10 @@ Assumes about 3 to 4 focused hours a day.
 
 ### Sun Oct 18: mock environment
 
-- [ ] **MUST** `data/orders.json`: about 30 orders (dates, items, status, amounts, coupon, charges)
-- [ ] **MUST** `data/policy.md`: return window (30 days), store credit window (60 days), damaged item, double charge, coupon rules
-- [ ] **MUST** `app/tools.py`: `get_order_status(order_id)` and `get_policy(topic)`
-- [ ] **MUST** Unit tests for both tools
+- [x] **MUST** `data/orders.json`: about 30 orders (dates, items, status, amounts, coupon, charges)
+- [x] **MUST** `data/policy.md`: return window (30 days), store credit window (60 days), damaged item, double charge, coupon rules
+- [x] **MUST** `app/tools.py`: `get_order_status(order_id)` and `get_policy(topic)`
+- [x] **MUST** Unit tests for both tools
 
 ### Mon Oct 19: benchmark and baseline
 

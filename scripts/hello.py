@@ -12,6 +12,10 @@ from pathlib import Path
 # Add project root to sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+# Ensure UTF-8 output on Windows consoles
+if sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 from app.config import get_settings
 
 
@@ -34,25 +38,33 @@ async def test_tier(client, model_id: str, tier_name: str, mock: bool = False):
         print(f"Token usage: {prompt_tokens} input, {completion_tokens} output")
         return True
 
-    try:
-        response = await client.chat.completions.create(
-            model=model_id,
-            messages=messages,
-            temperature=0.2,
-            max_tokens=100,
-        )
-        choice = response.choices[0]
-        reply = choice.message.content
-        usage = response.usage
-        prompt_tokens = usage.prompt_tokens if usage else 0
-        completion_tokens = usage.completion_tokens if usage else 0
+    max_retries = 3
+    for attempt in range(1, max_retries + 1):
+        try:
+            response = await client.chat.completions.create(
+                model=model_id,
+                messages=messages,
+                temperature=0.2,
+                max_tokens=100,
+            )
+            choice = response.choices[0]
+            reply = choice.message.content or ""
+            usage = response.usage
+            prompt_tokens = usage.prompt_tokens if usage else 0
+            completion_tokens = usage.completion_tokens if usage else 0
 
-        print(f"Reply: {reply.strip()}")
-        print(f"Token usage: {prompt_tokens} input, {completion_tokens} output")
-        return True
-    except Exception as e:  # noqa: BLE001
-        print(f"ERROR calling {tier_name} ({model_id}): {e}")
-        return False
+            print(f"Reply: {reply.strip()}")
+            print(f"Token usage: {prompt_tokens} input, {completion_tokens} output")
+            return True
+        except Exception as e:  # noqa: BLE001
+            if attempt < max_retries and (
+                "503" in str(e) or "overload" in str(e).lower()
+            ):
+                print(f"  [Attempt {attempt}] 503 overloaded, retrying in 2.5s...")
+                await asyncio.sleep(2.5)
+                continue
+            print(f"ERROR calling {tier_name} ({model_id}): {e}")
+            return False
 
 
 async def main():

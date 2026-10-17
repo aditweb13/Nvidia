@@ -27,11 +27,11 @@ Update at the end of each session.
 | Field | Value |
 |---|---|
 | Date | Oct 17, 2026 |
-| Phase | 0 (setup) |
-| Last completed | MIT LICENSE, .gitignore, .env.example, requirements.txt, config loader, scripts/hello.py, unit tests (4/4 passed) |
-| In progress | Token Factory credentials, exact model IDs, and catalog pricing from user |
-| Next | Phase 1 (mock data & tools in app/tools.py, unit tests) and Phase 0 live hello test upon receiving API credentials |
-| Blockers | Awaiting Token Factory API key, base URL, exact model IDs, and prices |
+| Phase | 1 (Data and baselines) |
+| Last completed | Phase 0 live hello test verified across all 3 tiers; Phase 1 mock data (data/orders.json, data/policy.md) and tools (app/tools.py) with 10/10 tests passing |
+| In progress | 90 evaluation tickets in eval/tasks.jsonl (40 dev, 50 test) and deterministic grader |
+| Next | eval/tasks.jsonl, eval/grader.py, app/models.py, app/db.py, Ultra baseline run |
+| Blockers | None |
 
 ## 3. Facts to fill in (do not guess)
 
@@ -39,18 +39,18 @@ These must come from the Token Factory docs and catalog. Until filled, nothing t
 
 | Fact | Value | Source / date checked |
 |---|---|---|
-| Token Factory base URL | TBD | |
-| Nemotron Nano model ID | TBD | |
-| Nemotron Super model ID | TBD | |
-| Nemotron Ultra model ID | TBD | |
-| Nano price (in / out per 1M tokens) | TBD | |
-| Super price (in / out per 1M tokens) | TBD | |
-| Ultra price (in / out per 1M tokens) | TBD | |
-| Tool calling works on Nano / Super / Ultra | TBD | |
-| JSON mode available | TBD | |
-| Logprobs available | TBD | |
-| Rate limits | TBD | |
-| Credits available | TBD | |
+| Token Factory base URL | https://integrate.api.nvidia.com/v1 (NVIDIA endpoint) | Oct 17, 2026 |
+| Nemotron Nano model ID | `nvidia/nemotron-3-nano-omni-30b-a3b-reasoning` | Endpoint verified Oct 17, 2026 |
+| Nemotron Super model ID | `nvidia/nemotron-3-super-120b-a12b` | Endpoint verified Oct 17, 2026 |
+| Nemotron Ultra model ID | `nvidia/nemotron-3-ultra-550b-a55b` | Endpoint verified Oct 17, 2026 |
+| Nano price (in / out per 1M tokens) | $0.10 / $0.20 (configured placeholder) | .env config |
+| Super price (in / out per 1M tokens) | $0.50 / $1.50 (configured placeholder) | .env config |
+| Ultra price (in / out per 1M tokens) | $2.00 / $6.00 (configured placeholder) | .env config |
+| Tool calling works on Nano / Super / Ultra | Verified: Supported across all three tiers | `python -c` verification test Oct 17, 2026 |
+| JSON mode available | Verified: Supported on Nano & Super; prompt JSON with schema validation for all | Oct 17, 2026 |
+| Logprobs available | Optional / TBD | Oct 17, 2026 |
+| Rate limits | Standard API limits; retry with backoff on 503/429 implemented | scripts/hello.py Oct 17, 2026 |
+| Credits available | NVIDIA NIM developer credits active | Oct 17, 2026 |
 | Serverless Endpoints practical for this project | TBD | |
 
 ## 4. Decisions log
@@ -165,6 +165,19 @@ Fill in as you go.
 ## 11. Session log
 
 Newest first. One short entry per working session.
+
+### Oct 17, 2026 (Session 3)
+
+- User provided NVIDIA NIM API key in `.env`. Configured endpoint base URL `https://integrate.api.nvidia.com/v1`.
+- Verified available models and locked down exact tier IDs:
+  - Nano: `nvidia/nemotron-3-nano-omni-30b-a3b-reasoning`
+  - Super: `nvidia/nemotron-3-super-120b-a12b`
+  - Ultra: `nvidia/nemotron-3-ultra-550b-a55b`
+- Successfully tested tool calling across all three tiers; JSON mode verified.
+- Ran live `scripts/hello.py`: all 3 tiers responded with live tokens and replies. Added retry with backoff for transient 503 overload. Phase 0 is complete.
+- Started Phase 1: Created `data/policy.md` (return window, store credit, damaged, double charge, cancellation) and `data/orders.json` (30 diverse mock orders).
+- Implemented `app/tools.py` (`get_order_status`, `get_policy`) and 6 unit tests in `tests/test_tools.py`. Total 10/10 tests pass offline.
+- Next: Build `eval/tasks.jsonl` (90 tickets: 40 dev, 50 test), `eval/grader.py`, `app/models.py`, `app/db.py`.
 
 ### Oct 17, 2026 (Session 2)
 

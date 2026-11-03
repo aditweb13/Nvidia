@@ -1,149 +1,162 @@
+# Cascade — Cost-Aware Nemotron Model Router for AI Agents
+
+<div align="center">
+
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![NVIDIA Nemotron](https://img.shields.io/badge/NVIDIA%20Nemotron-Nano%20%7C%20Super%20%7C%20Ultra-76B900?style=flat-square&logo=nvidia&logoColor=white)](https://build.nvidia.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=flat-square&logo=docker&logoColor=white)](https://docker.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+
+**A cost-aware model router for AI agents built on NVIDIA Nemotron and Nebius Token Factory.**
+
+*Answers each task with the cheapest model that can do it correctly — easy tasks never pay for the expensive model, and hard tasks still get it.*
+
+Built for the **Nebius × NVIDIA Global AI Hackathon** (Track: Best Apps and Agents).
+
+</div>
+
 ---
-title: Cascade Nemotron Router
-emoji: ⚡
-colorFrom: indigo
-colorTo: green
-sdk: docker
-app_port: 7860
-pinned: false
-license: mit
-short_description: Cost-Aware Nemotron Model Router for ShopEasy
----
 
-# Cascade
-
-**A cost-aware model router for AI agents, built on NVIDIA Nemotron and Nebius Token Factory.**
-
-Cascade answers each task with the cheapest model that can do it correctly. A small model tries first, a verifier checks the answer, and only failures escalate to a stronger model. Easy tasks never pay for the expensive model, and hard tasks still get it.
-
-> Built for the **Nebius x NVIDIA Global AI Hackathon** (Track: Best Apps and Agents).
-
----
-
-## Why this exists
-
-Most AI apps send every request to one large model. That is like asking a senior surgeon to put on a band-aid. In a typical support inbox, a large share of requests are simple lookups that a small model handles fine. Cascade measures that gap and captures the savings without giving up quality.
-
-## How it works
+## 📸 Architecture
 
 ```
-Task -> Controller -> Nano -> Verifier --pass--> Answer
-                        |         |
-                        |        fail
-                        v         v
-                      Super -> Verifier --pass--> Answer
-                        |         |
-                        |        fail
-                        v         v
-                      Ultra -> Verifier --> Answer (or flag for human review)
+Task → Controller → Nemotron Nano → Verifier --pass--> Answer
+                          |               |
+                          |              fail
+                          v               v
+                      Nemotron Super → Verifier --pass--> Answer
+                          |               |
+                          |              fail
+                          v               v
+                      Nemotron Ultra → Verifier --> Answer (or flag for human review)
 
 Every call is logged: tier, tokens, cost, latency, verifier result.
 ```
 
-1. The **controller** starts at the cheapest tier (Nemotron Nano).
-2. The **verifier** runs cheap checks first (schema, tool grounding, policy rules) and more expensive ones only when needed (self-consistency, LLM judge).
-3. On failure, the task **escalates** to the next tier together with the reason for the failure.
-4. Every call is logged to SQLite. The dashboard and the evaluation harness both read from this log.
+> **TODO:** Replace this block with `assets/cascade-dashboard.png` (screenshot of live Streamlit evaluation dashboard)
 
-See [architecture.md](architecture.md) for the full design.
+---
 
-## Demo scenario: ShopEasy support tickets
+## ✨ Features
 
-| Ticket | Difficulty | Expected path |
-|---|---|---|
-| "Where is my order #4821?" | Easy | Nano, passes |
-| "Return a jacket I bought 40 days ago" | Medium | Nano fails a policy check, Super passes |
-| "Charged twice, coupon failed, item damaged" | Hard | Nano and Super fail, Ultra passes |
+- **Three-tier NVIDIA Nemotron cascade:** Nano → Super → Ultra — escalates only when a verifier rejects the response.
+- **Five-layer verification pipeline** (cheapest-first): schema validation → tool grounding → policy rule checks → self-consistency sampling → LLM judge.
+- **OpenAI-compatible REST API** with native function calling (`get_order_status`, `get_policy`).
+- **Per-call cost accounting:** tokens, micro-dollar costs, and latency logged to SQLite for every request.
+- **Streamlit evaluation dashboard** with live cost-accuracy tradeoff charts.
+- **Evaluation harness** supporting dev and frozen held-out test splits.
+- **Docker + docker-compose** for one-command deployment.
 
-## Results
+---
 
-### Final Held-Out Test Set (50 Frozen Tickets, `cache=False`)
+## 📊 Evaluation Results
 
-*Evaluated live against NVIDIA NIM endpoints at Git commit `e2d65f9` (`v1.0-eval`). Response caching disabled.*
-
-| Configuration | Graded Accuracy | Total Cost (50 tickets) | Avg Cost / Ticket | Avg Latency | Tier Distribution | Notes |
-|---|---|---|---|---|---|---|
-| **Nano only** | **56.0%** (28/50) | **$0.009696** | **$0.000194** | 15.87s | 100% Nano | Fast & cheap; handles simple tracking lookups |
-| **Super only** | **56.0%** (28/50) | **$0.045178** | **$0.000904** | 8.35s | 100% Super | Strong policy compliance, zero 503 service drops |
-| **Ultra only** | **2.0%** (1/50) | **$0.008578** | $0.000172 | 1.16s | 49/50 dropped | 49 requests failed due to 429/503 limits on 550B preview |
-| **Cascade (Ours)** | **42.0%** (21/50) | **$0.011996** | **$0.000240** | 20.65s | 98% Nano, 2% Review | High cost efficiency ($0.00024/ticket) vs Super |
-
-### Dev Benchmark Set (40 Tickets)
+### Dev Benchmark (40 Tickets — Synthetic Support Tickets)
 
 | Configuration | Graded Accuracy | Total Cost (40 tickets) | Avg Latency | Notes |
 |---|---|---|---|---|
-| Nano only | 57.5% | $0.006846 | 16.13s | Solves standard lookups, fails complex multi-issue complaints |
-| Super only | 67.5% | $0.036253 | 12.58s | Solid policy adherence, zero 503 drops |
-| Ultra only | 12.5% | $0.038796 | 6.93s | Frontier reasoning; heavily dropped by 503 preview limits |
-| **Cascade (Ours)** | **90.0%** | **$0.012420** | **2.15s** | **65.7% lower cost than Super with higher accuracy** |
+| Nano only | 57.5% | $0.006846 | 16.13s | Solves simple lookups, fails complex multi-issue |
+| **Super only** | **67.5%** | $0.036253 | 12.58s | Solid policy adherence |
+| **Cascade (Ours)** | **90.0%** | $0.012347 | — | **65.7% lower cost** than Super-only |
 
-![Cost vs accuracy](eval/results/pareto.png)
+### Final Held-Out Test Set (50 Frozen Tickets — `cache=False`)
 
-Cascade costs more than Ultra alone only on the small subset of edge cases that fail across every tier before succeeding or flagging for human review. We report this trade-off transparently in the evaluation harness.
+*Evaluated live against NVIDIA NIM endpoints at Git commit `e2d65f9` (`v1.0-eval`). Response caching disabled.*
 
-## Quickstart
+| Configuration | Graded Accuracy | Total Cost (50 tickets) | Avg Cost/Ticket | Avg Latency | Notes |
+|---|---|---|---|---|---|
+| **Nano only** | **56.0%** (28/50) | $0.009696 | $0.000194 | 15.87s | Fast & cheap; handles simple tracking lookups |
+| **Super only** | **56.0%** (28/50) | $0.045178 | $0.000904 | 8.35s | Strong policy compliance, zero 503 service drops |
+| Ultra only | 2.0% (1/50) | $0.008578 | $0.000172 | 1.16s | 49/50 requests failed due to 429/503 limits on 550B preview |
+| **Cascade (Ours)** | **42.0%** (21/50) | $0.011996 | $0.000240 | 20.65s | **~73% lower cost** than Super-only; 98% Nano, 2% escalated |
+
+> ⚠️ **Honest interpretation:** On the dev set, Cascade achieved 90.0% accuracy at 65.7% lower cost than Super-only. On the frozen held-out set, accuracy dropped to 42.0% (vs. 56.0% for single-tier baselines), while the cost saving (~73% vs Super-only) held. The verifier quality bounds system quality — see false-pass and false-fail rates in `eval/results/`.
+
+---
+
+## 🏗️ Architecture Diagram
+
+```mermaid
+flowchart TD
+    A[Incoming Task] --> B[Controller]
+    B --> C[Nemotron Nano\nnemo-3-nano-omni-30b-a3b]
+    C --> D{Verifier\nSchema · Grounding · Policy}
+    D -- pass --> E[✅ Answer Returned]
+    D -- fail --> F[Nemotron Super\nnemo-3-super-120b-a12b]
+    F --> G{Verifier\n+ Self-Consistency · LLM Judge}
+    G -- pass --> E
+    G -- fail --> H[Nemotron Ultra\nnemo-3-ultra-550b-a55b]
+    H --> I{Verifier}
+    I -- pass --> E
+    I -- fail --> J[🚩 Flagged for Human Review]
+
+    B --> K[(SQLite Log\nTier · Tokens · Cost · Latency)]
+    K --> L[Streamlit Dashboard]
+    K --> M[Eval Harness]
+```
+
+---
+
+## 📁 Project Structure
+
+```
+cascade/
+├── app/
+│   ├── main.py            FastAPI app and SSE stream
+│   ├── models.py          Token Factory client, tiers, cost calculation
+│   ├── cascade.py         Controller and escalation loop
+│   ├── router.py          Predict-then-route classifier (stretch)
+│   ├── tools.py           get_order_status, get_policy
+│   ├── schemas.py         Pydantic models
+│   ├── db.py              SQLite logging
+│   └── verifiers/         schema, grounding, rules, consistency, judge
+├── data/                  Mock orders, policy, SQLite file
+├── eval/                  Benchmark tasks, grader, runner, plots
+├── ui/                    Streamlit dashboard
+├── scripts/               Setup and helper scripts
+├── README.md
+├── architecture.md
+├── Dockerfile
+└── docker-compose.yml
+```
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-
 - Python 3.11+
-- A Nebius Token Factory API key
-- Git
+- NVIDIA NIM API key (set `NVIDIA_API_KEY` in `.env`)
+- Docker (optional, for containerized deployment)
 
-### Install
+### Local Setup
 
 ```bash
-git clone https://github.com/<your-username>/cascade.git
-cd cascade
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+git clone https://github.com/aditweb13/Nvidia.git
+cd Nvidia
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # or .\venv\Scripts\activate on Windows
+
+# Install dependencies
 pip install -r requirements.txt
-```
 
-### Configure
-
-```bash
+# Configure environment
 cp .env.example .env
+# Edit .env and add your NVIDIA_API_KEY
 ```
 
-Edit `.env` and fill in the values. Check the Token Factory docs and model catalog for the base URL and the exact model IDs.
-
-```env
-TOKEN_FACTORY_BASE_URL=<from Token Factory docs>
-TOKEN_FACTORY_API_KEY=<your key>
-
-MODEL_NANO=<exact Nemotron Nano model id>
-MODEL_SUPER=<exact Nemotron Super model id>
-MODEL_ULTRA=<exact Nemotron Ultra model id>
-
-# Prices in USD per 1M tokens (copy from Token Factory pricing)
-PRICE_NANO_IN=0
-PRICE_NANO_OUT=0
-PRICE_SUPER_IN=0
-PRICE_SUPER_OUT=0
-PRICE_ULTRA_IN=0
-PRICE_ULTRA_OUT=0
-
-DB_PATH=data/cascade.db
-```
-
-Never commit `.env`.
-
-### Verify the setup
+### Run the App
 
 ```bash
-python scripts/hello.py
+uvicorn app.main:app --reload        # API on http://localhost:8000
+streamlit run ui/dashboard.py        # Dashboard on http://localhost:8501
 ```
 
-This calls each tier once and prints the reply and token usage.
-
-### Run the app
-
-```bash
-uvicorn app.main:app --reload          # API on http://localhost:8000
-streamlit run ui/dashboard.py          # Dashboard on http://localhost:8501
-```
-
-### Run the evaluation
+### Run the Evaluation
 
 ```bash
 python eval/run_eval.py --split dev --config all
@@ -153,67 +166,51 @@ python eval/plot.py
 
 Results are written to `eval/results/`.
 
-## Project structure
+### Docker
 
-```
-cascade/
-├── app/
-│   ├── main.py          FastAPI app and SSE stream
-│   ├── models.py        Token Factory client, tiers, cost calculation
-│   ├── cascade.py       Controller and escalation loop
-│   ├── router.py        Predict-then-route classifier (stretch)
-│   ├── tools.py         get_order_status, get_policy
-│   ├── schemas.py       Pydantic models
-│   ├── db.py            SQLite logging
-│   └── verifiers/       schema, grounding, rules, consistency, judge
-├── data/                Mock orders, policy, SQLite file
-├── eval/                Benchmark tasks, grader, runner, plots
-├── ui/                  Streamlit dashboard
-├── scripts/             Setup and helper scripts
-├── README.md
-├── PRD.md
-├── architecture.md
-├── design.md
-├── rules.md
-├── memory.md
-└── LICENSE
+```bash
+docker-compose up --build
 ```
 
-## How we use NVIDIA and Nebius
+---
 
-- **NVIDIA Nemotron (Nano, Super, Ultra):** The core three-tier model hierarchy (`nemotron-3-nano-omni-30b-a3b-reasoning`, `nemotron-3-super-120b-a12b`, and `nemotron-3-ultra-550b-a55b`).
-- **Nebius Token Factory:** Unifies all three tiers under one standard OpenAI-compatible API endpoint (`https://integrate.api.nvidia.com/v1`), allowing seamless model cascading without maintaining multiple SDK clients or connection pools.
-- **Where Token Factory & NIM Helped:**
-  - Standardized function calling across all tiers (`tools=[get_order_status]`).
-  - Native token usage telemetry (`usage.prompt_tokens`, `usage.completion_tokens`) enabling exact micro-dollar accounting for every call.
-  - Sub-second latency on the 30B Nano MoE tier, which handles the majority of inbound queries.
+## 🔌 How it uses NVIDIA & Nebius
 
-## What was built during the submission period
+| Component | Role |
+|---|---|
+| **NVIDIA Nemotron Nano** (`nemotron-3-nano-omni-30b-a3b`) | First-tier cheap MoE model; handles majority of inbound queries |
+| **NVIDIA Nemotron Super** (`nemotron-3-super-120b-a12b`) | Second tier for policy-sensitive and medium-complexity tasks |
+| **NVIDIA Nemotron Ultra** (`nemotron-3-ultra-550b-a55b`) | Final escalation for unresolvable edge cases |
+| **Nebius Token Factory** | Unified OpenAI-compatible endpoint across all three tiers, enabling seamless cascading without multiple SDK clients |
 
-Everything in this repository was created entirely from scratch during the hackathon submission period (commenced October 17, 2026). Zero pre-existing code was used.
+---
 
-## Feedback on Token Factory and NVIDIA tools
+## ⚠️ Limitations
 
-A detailed, honest evaluation of our developer experience—including latency benchmarks across 40 tickets, tool-calling observations, and 503 availability analysis on 550B models—is documented in [FEEDBACK.md](FEEDBACK.md).
-
-## Key Deliverables & Documentation
-
-- [Architecture Guide](architecture.md): System components, database schema, and verifier pipeline.
-- [Deployment Guide](DEPLOYMENT.md): Instructions for local, Docker (`docker-compose up`), Render, and Hugging Face Spaces.
-- [Developer Feedback](FEEDBACK.md): Benchmark results, friction points, and recommendations for Token Factory.
-- [3-Minute Demo Video Script](DEMO_SCRIPT.md): Video storyboard and voiceover narration cue cards.
-- [Devpost Submission Draft](SUBMISSION.md): Project overview, track description, and achievements.
-
-## Limitations
-
-- The benchmark uses a mock store with synthetic tickets. Real-world traffic would need its own benchmark.
-- Verifier quality bounds system quality. See the false-pass and false-fail rates in the results.
+- Benchmark uses a mock store with synthetic support tickets. Real-world traffic needs its own benchmark.
+- Verifier quality bounds system quality — false-pass and false-fail rates are documented in `eval/results/`.
 - Escalation adds latency for tasks that climb several tiers.
+- Nemotron Ultra (550B preview) had heavy rate-limiting during evaluation (429/503), significantly impacting Ultra-only results on the held-out set.
 
-## License
+---
 
-MIT. See [LICENSE](LICENSE).
+## 🗺️ Roadmap
 
-## Acknowledgements
+- [ ] Predict-then-route classifier (skip Nano for known-hard queries)
+- [ ] Online cost-quality tradeoff tuning
+- [ ] Streaming SSE output for real-time frontend integration
+- [ ] Real customer-support dataset evaluation
 
-Nebius, NVIDIA, and Devpost for the hackathon.
+---
+
+## 📄 License
+
+MIT — see [LICENSE](LICENSE).
+
+---
+
+<div align="center">
+
+Built by [Aditya Raj](https://github.com/aditweb13) · [LinkedIn](https://linkedin.com/in/aditya-raj-a1891a285) · [adi111sam121@gmail.com](mailto:adi111sam121@gmail.com)
+
+</div>
